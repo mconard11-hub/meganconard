@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Megan Conard — Engineer & Energy Strategist</title>
+<title>Megan Conard</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/LXFnfHWh/Business-3.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <!-- Mistrully (serif display) and Perandory (sans) must be self-hosted -->
@@ -84,8 +85,8 @@ section{min-height:100vh;position:relative}
   .orbit-card:nth-child(1){top:calc(50% - 65px - 38%);left:calc(50% - 65px)}
   .orbit-card:nth-child(2){top:calc(50% - 65px - 14%);left:calc(50% - 65px + 52%)}
   .orbit-card:nth-child(3){top:calc(50% - 65px + 30%);left:calc(50% - 65px + 27%)}
-  .orbit-card:nth-child(4){top:calc(50% - 65px + 30%);left:calc(50% - 65px - 27%)}
-  .orbit-card:nth-child(5){top:calc(50% - 65px - 14%);left:calc(50% - 65px - 52%)}
+  .orbit-card:nth-child(4){top:calc(50% - 65px - 14%);left:calc(50% - 65px - 52%)}
+  .orbit-card:nth-child(5){top:calc(50% - 65px + 30%);left:calc(50% - 65px - 27%)}
 }
 @media(max-width:639px){
   #home{align-items:flex-start;padding-top:100px}
@@ -130,7 +131,7 @@ section{min-height:100vh;position:relative}
 .proj-card:hover .proj-card-overlay{padding-bottom:36px}
 .proj-card-overlay h3{font-family:var(--serif);font-size:1.1rem;font-weight:700;margin-bottom:8px;color:var(--white)}
 .proj-card-overlay p{font-size:0.78rem;line-height:1.6;color:rgba(255,255,255,0.8);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card-cta{display:inline-block;margin-top:10px;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold2);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+.card-cta{display:inline-block;margin-top:10px;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
 .proj-card:hover .card-cta{opacity:1;transform:translateY(0)}
 /* Arrows */
 .carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--navy);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;transition:background .25s,transform .25s;box-shadow:0 4px 16px rgba(62,31,71,0.2)}
@@ -169,8 +170,8 @@ section{min-height:100vh;position:relative}
 /* MSC cards — staggered hover-reveal */
 .msc-card-stack{display:flex;flex-direction:column;gap:10px}
 .msc-snap-card{background:rgba(248,239,226,0.05);border:1px solid rgba(248,239,226,0.1);padding:16px 18px;cursor:pointer;transition:background .3s,border-color .3s,transform .3s,opacity .3s;border-left:3px solid transparent;opacity:1;transform:translateY(0)}
-.msc-snap-card h4{font-family:var(--serif);font-size:0.88rem;color:var(--white);margin-bottom:4px;line-height:1.3}
-.msc-snap-card p{font-size:0.73rem;color:rgba(248,239,226,0.55);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.msc-snap-card h4{font-family:var(--serif);font-size:0.88rem;color:var(--cream);margin-bottom:4px;line-height:1.3}
+.msc-snap-card p{font-size:0.73rem;color:rgba(248,239,226,0.75);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .msc-snap-card .snap-cta{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-top:6px;opacity:0;transform:translateY(4px);transition:all .25s}
 .msc-snap-card:hover .snap-cta{opacity:1;transform:translateY(0)}
 /* When a sibling is hovered, other cards in same col fade out */
@@ -230,7 +231,7 @@ section{min-height:100vh;position:relative}
 /* Moodboard stage */
 .press-board{position:relative;width:100%;height:700px;margin:0 auto;max-width:1160px;z-index:1}
 /* Envelope trigger */
-.press-envelope{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:260px;cursor:pointer;z-index:30;transition:opacity .5s,transform .5s;user-select:none}
+.press-envelope{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);width:260px;cursor:pointer;z-index:30;transition:opacity .5s,transform .5s;user-select:none}
 .press-envelope img{width:100%;display:block;transition:opacity .35s,transform .35s;position:absolute;top:0;left:0}
 .press-envelope img.env-open{opacity:0;transform:translateY(-6px) scale(1.03)}
 .press-envelope:hover img.env-closed{opacity:0;transform:translateY(6px) scale(0.97)}
@@ -243,9 +244,9 @@ section{min-height:100vh;position:relative}
 .press-card-pin:hover{z-index:50!important}
 .press-card-pin-inner{background:#fff;border-radius:6px;box-shadow:0 6px 28px rgba(62,31,71,0.16),0 2px 8px rgba(62,31,71,0.08);overflow:hidden;position:relative}
 /* Preview image area */
-.press-card-pin-img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;background:var(--navy)}
+.press-card-pin-img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;background:var(--navy)}
 /* Fallback if screenshot not available */
-.press-card-pin-img-placeholder{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#3e1f47,#5a0fa0)}
+.press-card-pin-img-placeholder{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#3e1f47,#5a0fa0)}
 .press-card-pin-img-placeholder svg{width:36px;height:36px;fill:rgba(255,121,0,0.5)}
 .press-card-pin-foot{padding:10px 12px 13px;background:#fff}
 .press-card-pin-outlet{font-size:0.58rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
@@ -341,9 +342,10 @@ footer{background:var(--navy);border-top:1px solid rgba(255,121,0,0.15);padding:
     <div class="fade-in">
       <div class="section-label">About Me</div>
       <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);color:var(--navy);margin-bottom:28px;line-height:1.2">Engineer.<br>Strategist.<br>Energy Transition.</h2>
-      <p class="about-bio">I hold a degree in <strong>Mechanical Engineering with a Minor in Energy Engineering</strong> from the University of Colorado Boulder and am currently completing an <strong>MSc in Energy Management</strong> with a specialization in Finance and Investment at ESCP Business School.</p>
-      <p class="about-bio">This is a combination that has been deliberate from the beginning. While working in engineering, I have come to understand that investment decisions in energy require both <strong>financial rigor and a clear understanding of the operational drivers</strong> that underpin asset performance. Without this, it doesn't matter how good the technical solution — a project will end.</p>
-      <p class="about-bio">I have always believed that energy is the foundation of progress. It enables innovation and growth, while also shaping the challenges of the energy transition.</p>
+      <p class="about-bio">I have always believed that energy is the foundation of progress. It enables innovation and growth, while also shaping the challenges of the energy transition. No matter my role, I've always centered my ambitions around energy.</p>
+      <p class="about-bio">I hold a degree in <strong>Mechanical Engineering</strong> from the University of Colorado Boulder and worked for two years at <strong>Saint-Gobain</strong>. First, as a research engineer for carbon capture technology and then exploring sustainability process solutions for gypsum board.</p>
+      <p class="about-bio">While working in engineering, I came to understand that investment decisions in energy require both <strong>financial rigor and a clear understanding of the operational drivers</strong> that underpin asset performance. Without the financial drivers, it doesn't matter how good the technical solution, a project will end.</p>
+      <p class="about-bio">Now, I am completing an <strong>MSc in Energy Management</strong> with a specialization in Finance and Investment at ESCP Business School to learn these drivers.</p>
       <div class="edu-box">
         <h4>Education</h4>
         <div class="edu-item">
@@ -387,8 +389,8 @@ footer{background:var(--navy);border-top:1px solid rgba(255,121,0,0.15);padding:
 <!-- SNAPSHOT -->
 <section id="snapshot" style="min-height:auto">
   <div style="padding:60px 60px 0;max-width:1400px;margin:0 auto">
-    <div class="section-label fade-in">Snapshot</div>
-    <h2 class="section-title fade-in">Snapshot</h2>
+    <div class="section-label fade-in">Context</div>
+    <h2 class="section-title fade-in" style="color:#f8efe2">Snapshot</h2>
   </div>
   <div class="snapshot-grid">
     <div class="snap-col fade-in">
@@ -543,56 +545,56 @@ footer{background:var(--navy);border-top:1px solid rgba(255,121,0,0.15);padding:
     <!-- 8 polaroid cards — scattered by JS on click -->
     <a class="press-card-pin" href="https://www.colorado.edu/mechanical/2023/05/22/mechanicals-megan-conard-wins-prestigious-silver-medal-award" target="_blank" rel="noopener">
       <div class="press-card-pin-inner">
-        <img class="press-card-pin-img" src="https://www.colorado.edu/mechanical/sites/default/files/styles/large/public/article-image/silver_medal.jpg" alt="Silver Medal Award" style="object-fit:cover;width:100%;aspect-ratio:16/10;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#3e1f47,#5a0fa0)"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.25 3L10 15z"/></svg></div>
+        <img class="press-card-pin-img" src="https://i.ibb.co/bgdbBnzK/52920529974-c6cc9e32a9-o.jpg" alt="Silver Medal Award" style="object-fit:cover;width:100%;aspect-ratio:4/3;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#3e1f47,#5a0fa0)"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.25 3L10 15z"/></svg></div>
         <div class="press-card-pin-foot"><div class="press-card-pin-outlet">CU Boulder</div><div class="press-card-pin-name">Silver Medal Award</div></div>
         <div class="press-card-hover-overlay"><div class="press-card-hover-title">Mechanical&rsquo;s Megan Conard Wins Prestigious Silver Medal Award</div><div class="press-card-hover-cta">Read Article &rarr;</div></div>
       </div>
     </a>
     <a class="press-card-pin" href="https://www.colorado.edu/mechanical/2023/05/11/mechanical-engineering-students-design-adapter-surgical-robot-hugo" target="_blank" rel="noopener">
       <div class="press-card-pin-inner">
-        <img class="press-card-pin-img" src="https://www.colorado.edu/mechanical/sites/default/files/styles/large/public/article-image/hugo_team.jpg" alt="Hugo Surgical Robot" style="object-fit:cover;width:100%;aspect-ratio:16/10;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#5a0fa0,#3e1f47)"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.25 3L10 15z"/></svg></div>
+        <img class="press-card-pin-img" src="https://i.ibb.co/zHTG6VpN/Untitled-design-6.png" alt="Hugo Surgical Robot" style="object-fit:cover;width:100%;aspect-ratio:4/3;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#5a0fa0,#3e1f47)"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.25 3L10 15z"/></svg></div>
         <div class="press-card-pin-foot"><div class="press-card-pin-outlet">CU Mechanical</div><div class="press-card-pin-name">Hugo Surgical Robot</div></div>
         <div class="press-card-hover-overlay"><div class="press-card-hover-title">ME Students Design Adapter for Surgical Robot &ldquo;Hugo&rdquo;</div><div class="press-card-hover-cta">Read Article &rarr;</div></div>
       </div>
     </a>
     <a class="press-card-pin" href="https://www.colorado.edu/mechanical/2021/09/09/interning-phillips-66" target="_blank" rel="noopener">
       <div class="press-card-pin-inner">
-        <img class="press-card-pin-img" src="https://www.colorado.edu/mechanical/sites/default/files/styles/large/public/article-image/phillips66.jpg" alt="Interning with Phillips 66" style="object-fit:cover;width:100%;aspect-ratio:16/10;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#3e1f47,#6b1cb8)"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.25 3L10 15z"/></svg></div>
+        <img class="press-card-pin-img" src="https://i.ibb.co/bjMtDZVh/Untitled-design-1.png" alt="Interning with Phillips 66" style="object-fit:cover;width:100%;aspect-ratio:4/3;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#3e1f47,#6b1cb8)"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.25 3L10 15z"/></svg></div>
         <div class="press-card-pin-foot"><div class="press-card-pin-outlet">CU Mechanical</div><div class="press-card-pin-name">Interning with Phillips 66</div></div>
         <div class="press-card-hover-overlay"><div class="press-card-hover-title">Interning with Phillips 66</div><div class="press-card-hover-cta">Read Article &rarr;</div></div>
       </div>
     </a>
     <a class="press-card-pin" href="https://www.youtube.com/watch?v=g2OtilwcBa4" target="_blank" rel="noopener">
       <div class="press-card-pin-inner">
-        <img class="press-card-pin-img" src="https://img.youtube.com/vi/g2OtilwcBa4/hqdefault.jpg" alt="The Future of Engineering" style="object-fit:cover;width:100%;aspect-ratio:16/10;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#6b1cb8,#3e1f47)"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.25 3L10 15z"/></svg></div>
+        <img class="press-card-pin-img" src="https://img.youtube.com/vi/g2OtilwcBa4/hqdefault.jpg" alt="The Future of Engineering" style="object-fit:cover;width:100%;aspect-ratio:4/3;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#6b1cb8,#3e1f47)"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.25 3L10 15z"/></svg></div>
         <div class="press-card-pin-foot"><div class="press-card-pin-outlet">YouTube &middot; CU Boulder</div><div class="press-card-pin-name">The Future of Engineering</div></div>
         <div class="press-card-hover-overlay"><div class="press-card-hover-title">The Future of Engineering — CU Boulder Video</div><div class="press-card-hover-cta">Watch Video &rarr;</div></div>
       </div>
     </a>
     <a class="press-card-pin" href="https://www.youtube.com/watch?v=veJG75EpEl4" target="_blank" rel="noopener">
       <div class="press-card-pin-inner">
-        <img class="press-card-pin-img" src="https://img.youtube.com/vi/veJG75EpEl4/hqdefault.jpg" alt="Women in Engineering — 9News" style="object-fit:cover;width:100%;aspect-ratio:16/10;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#5a0fa0,#3e1f47)"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.25 3L10 15z"/></svg></div>
+        <img class="press-card-pin-img" src="https://img.youtube.com/vi/veJG75EpEl4/hqdefault.jpg" alt="Women in Engineering — 9News" style="object-fit:cover;width:100%;aspect-ratio:4/3;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#5a0fa0,#3e1f47)"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.25 3L10 15z"/></svg></div>
         <div class="press-card-pin-foot"><div class="press-card-pin-outlet">9News</div><div class="press-card-pin-name">Women in Engineering — 9News</div></div>
         <div class="press-card-hover-overlay"><div class="press-card-hover-title">CU Boulder Seeing Increase in Women Enrolling in Engineering — 9News</div><div class="press-card-hover-cta">Watch &rarr;</div></div>
       </div>
     </a>
     <a class="press-card-pin" href="https://kdvr.com/news/local/cu-boulder-seeing-an-increase-in-women-enrolling-in-engineering-classes/" target="_blank" rel="noopener">
       <div class="press-card-pin-inner">
-        <div class="press-card-pin-img-placeholder" style="background:linear-gradient(135deg,#3e1f47,#5a0fa0)"><svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg></div>
+        <img class="press-card-pin-img" src="https://i.ibb.co/1GqCyrFr/Untitled-design-5.png" alt="Fox / KDVR" style="object-fit:cover;width:100%;aspect-ratio:4/3;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#3e1f47,#5a0fa0)"><svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg></div>
         <div class="press-card-pin-foot"><div class="press-card-pin-outlet">Fox / KDVR</div><div class="press-card-pin-name">Women in Engineering — KDVR</div></div>
         <div class="press-card-hover-overlay"><div class="press-card-hover-title">CU Boulder Seeing Increase in Women Enrolling in Engineering — Fox / KDVR</div><div class="press-card-hover-cta">Read &rarr;</div></div>
       </div>
     </a>
     <a class="press-card-pin" href="https://www.cpr.org/2024/05/01/cu-boulder-engineering-freshman-class-41-percent-women-highest-in-nation/" target="_blank" rel="noopener">
       <div class="press-card-pin-inner">
-        <div class="press-card-pin-img-placeholder" style="background:linear-gradient(135deg,#6b1cb8,#5a0fa0)"><svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg></div>
+        <img class="press-card-pin-img" src="https://i.ibb.co/v4Vhzsth/Untitled-design-3.png" alt="Colorado Public Radio" style="object-fit:cover;width:100%;aspect-ratio:4/3;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#6b1cb8,#5a0fa0)"><svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg></div>
         <div class="press-card-pin-foot"><div class="press-card-pin-outlet">Colorado Public Radio</div><div class="press-card-pin-name">41% Women Freshman Class</div></div>
         <div class="press-card-hover-overlay"><div class="press-card-hover-title">CU Boulder Engineering Freshman Class 41% Women — Highest in Nation</div><div class="press-card-hover-cta">Read &rarr;</div></div>
       </div>
     </a>
     <a class="press-card-pin" href="https://www.denver7.com/news/front-range/boulder/cu-boulder-becoming-a-top-destination-for-women-in-engineering" target="_blank" rel="noopener">
       <div class="press-card-pin-inner">
-        <div class="press-card-pin-img-placeholder" style="background:linear-gradient(135deg,#5a0fa0,#6b1cb8)"><svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg></div>
+        <img class="press-card-pin-img" src="https://i.ibb.co/YshygKb/Untitled-design-2.png" alt="Denver7" style="object-fit:cover;width:100%;aspect-ratio:4/3;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="press-card-pin-img-placeholder" style="display:none;background:linear-gradient(135deg,#5a0fa0,#6b1cb8)"><svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg></div>
         <div class="press-card-pin-foot"><div class="press-card-pin-outlet">Denver7</div><div class="press-card-pin-name">Top Destination for Women</div></div>
         <div class="press-card-hover-overlay"><div class="press-card-hover-title">CU Boulder Becoming a Top Destination for Women in Engineering — Denver7</div><div class="press-card-hover-cta">Watch &rarr;</div></div>
       </div>
@@ -720,7 +722,7 @@ const mscProjects=[
   const SET_W=ORIG_COUNT*CARD_W; // width of one full set in px
   // Start in the middle set so we can go both directions freely
   let pos=SET_W;
-  const AUTO_SPEED=2.0; // pixels per frame auto-scroll (faster)
+  const AUTO_SPEED=1.7; // pixels per frame auto-scroll (faster)
   let velX=0;
   let paused=false;
   let dragging=false;
@@ -852,14 +854,14 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
   // Card widths + scatter layout: [leftFrac, topFrac, rotateDeg, zIndex]
   const cardWidths = [185, 195, 178, 200, 182, 190, 175, 188];
   const layout = [
-    [0.02,  0.03, -3.8, 4],
+    [0.02,  0.02, -3.8, 4],
     [0.28,  0.01,  2.3, 6],
-    [0.58,  0.00, -1.6, 3],
-    [0.80,  0.05,  3.5, 7],
-    [0.02,  0.52,  2.6, 5],
-    [0.27,  0.50, -2.4, 8],
-    [0.56,  0.49,  1.3, 4],
-    [0.79,  0.48, -3.5, 6],
+    [0.55,  0.00, -1.6, 3],
+    [0.78,  0.04,  3.5, 7],
+    [0.02,  0.54,  2.6, 5],
+    [0.27,  0.53, -2.4, 8],
+    [0.54,  0.52,  1.3, 4],
+    [0.78,  0.51, -3.5, 6],
   ];
 
   // Init: all cards hidden at center
@@ -885,7 +887,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
       const [lp, tp, rot, zi] = layout[i];
       const cw = cardWidths[i];
       // Estimate card height ~ 240px (image 16/10 at cw + footer)
-      const cardH = Math.round(cw * 0.625) + 56;
+      const cardH = Math.round(cw * 0.75) + 56;
       const left  = Math.min(Math.max(lp * BW, 8), BW - cw - 8);
       const top   = Math.min(Math.max(tp * BH, 24), BH - cardH - 8);
 
@@ -932,7 +934,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
     cards.forEach((card, i) => {
       const [lp, tp, rot, zi] = layout[i];
       const cw = cardWidths[i];
-      const cardH = Math.round(cw * 0.625) + 56;
+      const cardH = Math.round(cw * 0.75) + 56;
       card.style.left = Math.min(Math.max(lp * BW, 8), BW - cw - 8) + 'px';
       card.style.top  = Math.min(Math.max(tp * BH, 24), BH - cardH - 8) + 'px';
     });
