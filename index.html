@@ -28,7 +28,7 @@
   --gold-light:#fff3cc;
   --text:#1e1a2e;
   --muted:#6b6076;
-  --white:#ffffff;
+  --white:#f8efe2;
   --serif:'Mistrully','Libre Baskerville',Georgia,serif;
   --sans:'Perandory','Montserrat',sans-serif;
 }
@@ -79,7 +79,7 @@ section{min-height:100vh;position:relative}
 .orbit-card{position:absolute;width:130px;height:auto;border-radius:0;overflow:visible;border:none;box-shadow:none;background:transparent;cursor:pointer;pointer-events:all;transition:transform .3s cubic-bezier(0.34,1.3,0.64,1),filter .3s}
 .orbit-card:hover{transform:scale(1.12) translateY(-4px)!important;filter:drop-shadow(0 8px 20px rgba(62,31,71,0.28))}
 .orbit-card img.orbit-img{position:static;width:100%;height:auto;object-fit:unset;display:block;transform:none}
-.orbit-card .card-label{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);background:rgba(62,31,71,0.85);color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-align:center;padding:4px 10px;white-space:nowrap;border-radius:2px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:10}
+.orbit-card .card-label{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);background:rgba(62,31,71,0.85);color:#f8efe2;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-align:center;padding:4px 10px;white-space:nowrap;border-radius:2px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:10}
 .orbit-card:hover .card-label{opacity:1}
 @media(min-width:640px){
   .orbit-card:nth-child(1){top:calc(50% - 65px - 38%);left:calc(50% - 65px)}
@@ -156,6 +156,9 @@ section{min-height:100vh;position:relative}
 .modal-skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .modal-skill{background:var(--navy);color:var(--cream);padding:4px 12px;font-size:0.72rem;font-weight:600;letter-spacing:0.08em}
 .modal-close{position:sticky;top:0;float:right;width:36px;height:36px;border:none;background:var(--navy);color:var(--white);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:10;margin:-40px -48px 0 0}
+.modal-back{display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid rgba(62,31,71,0.2);color:var(--muted);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:7px 14px;cursor:pointer;margin-bottom:20px;transition:color .2s,border-color .2s}
+.modal-back:hover{color:var(--navy);border-color:var(--navy)}
+.modal-back svg{width:14px;height:14px;fill:currentColor}
 @media(max-width:600px){.modal-body{padding:24px 20px 32px}.modal-close{margin:-24px -20px 0 0}}
 
 /* SNAPSHOT */
@@ -233,9 +236,9 @@ section{min-height:100vh;position:relative}
 /* Envelope trigger */
 .press-envelope{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);width:260px;cursor:pointer;z-index:30;transition:opacity .5s,transform .5s;user-select:none}
 .press-envelope img{width:100%;display:block;transition:opacity .35s,transform .35s;position:absolute;top:0;left:0}
-.press-envelope img.env-open{opacity:0;transform:translateY(-6px) scale(1.03)}
+.press-envelope img.env-open{opacity:0;transform:translateY(calc(-10% - 6px)) scale(1.03)}
 .press-envelope:hover img.env-closed{opacity:0;transform:translateY(6px) scale(0.97)}
-.press-envelope:hover img.env-open{opacity:1;transform:translateY(0) scale(1)}
+.press-envelope:hover img.env-open{opacity:1;transform:translateY(-42%) scale(1)}
 .press-envelope .env-closed{position:relative}/* first img is in flow */
 .press-board.revealed .press-envelope{opacity:0;pointer-events:none;transform:translate(-50%,-60%) scale(0.85)}
 /* Polaroid cards — hidden until click */
@@ -255,7 +258,7 @@ section{min-height:100vh;position:relative}
 .press-card-hover-overlay{position:absolute;inset:0;background:rgba(62,31,71,0.9);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .28s;border-radius:6px}
 .press-card-pin:hover .press-card-hover-overlay{opacity:1}
 .press-card-pin:hover .press-card-pin-inner{box-shadow:0 20px 50px rgba(62,31,71,0.3),0 8px 20px rgba(62,31,71,0.16)}
-.press-card-hover-title{font-family:var(--serif);font-size:0.82rem;color:#fff;line-height:1.5;text-align:center;font-style:italic;margin-bottom:10px}
+.press-card-hover-title{font-family:var(--serif);font-size:0.82rem;color:#f8efe2;line-height:1.5;text-align:center;font-style:italic;margin-bottom:10px}
 .press-card-hover-cta{font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold)}
 /* Pin dot on top */
 .press-card-pin::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:15px;height:15px;border-radius:50%;background:var(--gold);box-shadow:0 2px 8px rgba(255,121,0,0.55);z-index:2}
@@ -357,7 +360,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,121,0,0.15);padding:
           <div class="degree">BS Mechanical Engineering, Minor Energy Engineering · GPA 3.96/4.0 · Summa Cum Laude</div>
         </div>
       </div>
-      <a href="#" class="btn-resume">
+      <a href="https://github.com/mconard11-hub/meganconard/raw/8282dbc67d379e181b57f918819b51dd210afc55/CV_Megan%20Conard.pdf" class="btn-resume" download="CV_Megan_Conard.pdf" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
         Download Resume
       </a>
@@ -627,11 +630,16 @@ footer{background:var(--navy);border-top:1px solid rgba(255,121,0,0.15);padding:
 <div class="modal" id="modal">
   <button class="modal-close" onclick="closeModal()">&#x2715;</button>
   <div class="modal-body">
+    <button class="modal-back" id="modalBackBtn" onclick="openOtherModal()" style="display:none">
+      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Back to Other Projects
+    </button>
     <div class="modal-type" id="modalType"></div>
     <h2 id="modalTitle"></h2>
     <div class="modal-section"><h4>Problem</h4><p id="modalProblem"></p></div>
     <div class="modal-section"><h4>Process</h4><p id="modalProcess"></p></div>
     <div class="modal-section"><h4>Result</h4><p id="modalResult"></p></div>
+    <div class="modal-section modal-section-learnings"><h4>Learnings</h4><p id="modalLearnings"></p></div>
     <div class="modal-section"><h4>Skills</h4><div class="modal-skills" id="modalSkills"></div></div>
   </div>
 </div>
@@ -671,12 +679,117 @@ document.querySelectorAll('.orbit-card').forEach((c,i)=>{
 
 /* ── PROJECT DATA ── */
 const engProjects=[
-  {title:"Robotic Surgery Device Adapter",type:"Senior Design · Medtronic · Project Manager",desc:"Adapter enabling Medtronic's Hugo™ to operate two laparoscopic instruments. Led a team of 7. Design patent pending.",problem:"Medtronic's Hugo™ robotic surgery platform could not hold or operate existing hand-held laparoscopic instruments (LigaSure XP & Sonicision Sabre 7+), requiring expensive re-engineering of each device.",process:"Led a 7-person team through ideation, decision matrix, SolidWorks CAD, prototyping, and mechanical testing. Developed custom gear train, linear actuation carriages, and SIM-connected rotational inputs in a toolless-assembly mold.",result:"Fully functional adapter below 275 N-mm torque limit. Assembly time cut ~50%. Design patent pending.",skills:["SolidWorks","Gear Design","Linear Actuation","Mechanical Testing","Project Management"]},
-  {title:"Liquid Dual-Phase CO₂ Capture Membrane",type:"Industry R&D · Saint-Gobain",desc:"Pioneered ceramic processing reducing carbon capture energy intensity 25–40%. Patent applications filed.",problem:"Conventional carbon capture technologies consume significant energy, reducing net efficiency of low-carbon power generation.",process:"Applied powder processing, dip-coating, extrusion, and sintering to develop a nanoporous 3YSZ ceramic backbone with molten hydroxide. CO₂ captured via carbonate formation at 250–600°C.",result:"25–40% reduction in carbon capture energy intensity. Patent applications and invention disclosures filed.",skills:["Ceramics Processing","Materials Science","Carbon Capture","IP Development"]},
-  {title:"ML Production Scheduling Optimizer",type:"Industry R&D · Saint-Gobain",desc:"Python ML tool delivering ~10% productivity gains and ~$1.5M projected annual EBITDA uplift.",problem:"Manual production scheduling at a roofing plant failed to account for machine constraints and throughput variability.",process:"Developed a Python ML optimization model incorporating machine constraints, throughput variability, and operational sequencing. Replaced manual scheduling.",result:"~10% productivity improvement and estimated $1–1.5M annual EBITDA uplift. Adopted by plant operations.",skills:["Python","Machine Learning","Optimization","Manufacturing"]},
-  {title:"EV Electrification Health Impact Model",type:"NSF ASPIRE Research · CU Boulder",desc:"Python model linking HDV electrification to $55.5M avoided health costs across Denver metro.",problem:"Policymakers lacked a rigorous tool to quantify monetary health benefits of electrifying heavy-duty vehicle fleets at metropolitan scale.",process:"Built a reduced-complexity air pollution model linking HDV emissions to PM2.5, NOx, NH3 air quality changes. Applied GIS-based neighborhood equity analysis.",result:"$55.5M total avoided health costs (PM2.5: $39.4M, NOx: $38.4M). Presented to NSF ASPIRE.",skills:["Python","GIS","Techno-Economic Modeling","Environmental Health"]},
-  {title:"Refinery CAPEX Projects",type:"Industry · Phillips 66",desc:"Two concurrent capital projects at Sweeny, TX — caustic line and 2oo3 voting logic upgrade.",problem:"MPR Services filter skid had unreliable caustic supply. Thermal oxidizers had single-point failure risk on environmental protection instrumentation.",process:"Field walk-downs, price estimates, contractor engagement, purchase orders, and safe construction managed concurrently.",result:"$180K CAPEX delivered. Improved MPR uptime and environmental compliance. Zero-incident construction.",skills:["CAPEX Scoping","P&ID Review","Contractor Management","Environmental Compliance"]},
-  {title:"Adaptive Chemistry Lab Equipment",type:"Undergraduate Design · CU Boulder",desc:"Adaptive equipment enabling a student with paraplegia to participate fully in AP Chemistry labs.",problem:"A high school student with paraplegia was excluded from AP Chemistry labs due to inaccessible equipment.",process:"Applied human-centered design, iterating prototypes addressing grip, reach, and stability constraints with the student directly.",result:"Full participation achieved. Recognized by CU Boulder College of Engineering.",skills:["Human-Centered Design","Prototyping","Accessibility Engineering"]},
+  {
+    title:"Placco Gypsum Recycling Program",year:"2025",company:"Saint-Gobain · Vaujours, France & European Plants",
+    desc:"Investigated the effect of recycle content, purity, paper fibers, and core morphology on nail pull strength in Placco gypsum board — conducting lab studies at GPI Vaujours and live plant trials in Hungary, Czech Republic, and Poland.",
+    problem:"Saint-Gobain's Gypsum Business needed to understand how key process parameters — recycled gypsum content, overburn, paper fiber concentration, soap type, and foam bubble structure — quantitatively affect nail pull strength (the ASTM standard mechanical test measuring gypsum panel integrity). The direct correlations had not been formally established, making it difficult to optimize production and standardize practices across European plants with different machinery and climates.",
+    process:"Selected for Saint-Gobain's Essentials Global Experience (EGE) program — a one-month immersive cross-functional project based at the Gypsum Performance Institute (GPI) in Vaujours, France. Led three parallel workstreams: (1) Purity Project: lab overburn tests on Vaujours boards at 180°C/100% humidity, varying hemihydrate content to measure nail pull and core hardness degradation (–17.1N per 10% increase in hemihydrate). (2) Recycle Project: three-phase lab study varying soap concentration (GFA02, GPA37, 3711), recycle rate (0–5%), and paper fiber content (0–1.86%) — measuring nail pull, core hardness, and EZ bubble imaging (d50). (3) Process Variability Project: correlation analysis of seasonality and core morphology using multi-year data from Palatka, Moundsville, and Silver Grove US plants. Ran live plant trials in Matra (Hungary), Melnik (Czech Republic), and Stawiany (Poland).",
+    result:"Purity: overburn measurably reduces mechanical strength at high hemihydrate levels. Recycle: GFA02 soap type showed a clear positive correlation between recycle rate and nail pull; paper fibers increase core hardness and indentation but reduce nail pull. Seasonality: rising ambient, stucco, and water temperatures increase slurry temp and weaken gypsum crystal structure — consistent negative correlations across all three US plants. Core morphology: larger, more circular, less coalesced bubbles with thicker walls improve nail pull — confirmed at both Palatka and Moundsville. Plant trials validated lab findings with live production data across four countries.",
+    learnings:"Working across four countries with engineers who had decades of tacit process knowledge made me realize how much goes unshared simply because no one asked. The most important skill I used wasn't technical — it was knowing when to stop running tests and go talk to the person who had been running that line for fifteen years. That's where the real hypotheses came from.",
+    skills:["Design of Experiments","Statistical Correlation Analysis","Nail Pull / Core Hardness Testing","EZ Bubble Imaging","Gypsum Processing","Cross-Site Plant Trials","Global Team Coordination","EOM / Lean Manufacturing"]
+  },
+  {
+    title:"Liquid Dual-Phase CO₂ Capture Membrane",year:"2023–2025",company:"Saint-Gobain Research · Northborough, MA",
+    desc:"Pioneered ceramic processing methods for a novel dual-phase membrane that reduces carbon capture energy intensity by 25–40%. Patent applications filed.",
+    problem:"Conventional post-combustion carbon capture technologies (amine scrubbing) require large amounts of energy to operate, significantly reducing the net efficiency of low-carbon power generation and industrial decarbonization.",
+    process:"Applied powder processing, dip-coating, extrusion, and sintering to develop a nanoporous 3YSZ ceramic backbone filled with molten hydroxide. CO₂ is transported via concentration gradient and carbonate formation at 250–600°C, combining liquid kinetics with solid structural integrity.",
+    result:"25–40% reduction in carbon capture energy intensity vs. conventional methods. Contributed to multiple patent applications and invention disclosures filed with Saint-Gobain IP.",
+    learnings:"This project taught me to navigate the gap between fundamental materials science and engineering scale-up. Designing experiments that produced both publishable insights and IP-protectable results required constantly asking whether the work was being done for knowledge or for value — and often the answer had to be both.",
+    skills:["Ceramics Processing","Powder Processing","Dip-Coating","Sintering","Carbon Capture","IP Development","Materials Science"]
+  },
+  {
+    title:"Scrap SiC Circular Economy Program",year:"2023–2024",company:"Saint-Gobain Research · Northborough, MA",
+    desc:"Designed experiments to repurpose 30+ metric tons/year of scrap silicon carbide into high-value thermal interface materials, creating a new product line from industrial waste.",
+    problem:"The Saint-Gobain Northborough plant generated over 30 metric tons per year of scrap SiC with no downstream use — a landfill cost and a wasted material with exceptional thermal conductivity.",
+    process:"Used particle packing theory to develop processing routes that transformed scrap SiC into highly conductive thermal interface materials (TIMs). Built the investment case for the circular economy program, including cost, revenue, and sustainability impact analysis for internal leadership approval.",
+    result:"30+ metric tons/year of scrap repurposed. New TIM product line developed. Business case approved, eliminating landfill costs and creating a new internal revenue stream.",
+    learnings:"Building the business case alongside the technical work was the most valuable part. Understanding how engineering results had to be translated into financial logic — payback period, avoided cost, new revenue — shaped how I thought about applied R&D and ultimately drove me toward energy finance.",
+    skills:["Particle Packing","Materials Characterization","Circular Economy","Business Case Development","Thermal Materials"]
+  },
+  {
+    title:"Solid Oxide Electrolysis Cell Research",year:"2023–2025",company:"Saint-Gobain Research · Northborough, MA",
+    desc:"Contributed to US government-funded research developing nickelate (LNO) ceramic electrode materials for solid oxide electrolysis cells (SOECs), achieving a 70% improvement in current density and a 67% reduction in cell resistance vs. state-of-the-art LSM electrodes.",
+    problem:"Conventional LSM electrodes used in solid oxide electrolysis cells suffer from low current density and high cell resistance, limiting the efficiency of high-temperature hydrogen production. Nickelate (Ln₂NiO₄) electrodes showed theoretical promise but decomposed in the presence of ceria barrier layers — a fundamental stability issue blocking commercialization.",
+    process:"Worked within Saint-Gobain's ceramic processing group on two parallel US government-funded programs: a 3-year EERE-funded SOEC material discovery project ($1.5M, partnered with Boston University and PNNL) and a 3-year DoE-funded reversible SOEC/SOFC program ($3M, partnered with Boston University, WPI, West Virginia University, and Gaia Energy Research). Saint-Gobain's role centered on co-sintering: incorporating stabilized LNO nickelate electrodes into full cell stacks — ensuring correct porosity, electrochemical activity, and defect-free microstructure. Characterized powder particle size distributions via SEM, measured electrochemical performance using EIS, and ran durability tests up to 500 hours.",
+    result:"Passed Year 1 Go/No-Go milestone in March 2020 — achieving +70% electrolyzer current density vs. LSM-YSZ at 1.4V and 500hr continuous operation. LNO cells demonstrated 67% lower cell resistance than LSM (0.24 vs. 0.72 Ohm·cm²). Stabilized LNO in the presence of ceria. Successfully transferred co-sintering solution to both electrode-supported and co-sintered cell architectures. Patent granted in US and Japan.",
+    learnings:"This project showed me how materials science at the nano-scale connects directly to the economics of green hydrogen. The stability problem with LNO wasn't just a chemistry puzzle — it was the bottleneck blocking a commercially viable SOEC stack. Understanding that link between fundamental material behavior and technology readiness shaped how I now evaluate energy technology investment.",
+    skills:["Ceramic Processing","Co-Sintering","SEM","EIS","Electrochemistry","Powder Characterization","SOEC/SOFC","Green Hydrogen","DoE / EERE Funded Research"]
+  },
+  {
+    title:"ML Production Scheduling Optimizer",year:"2023–2024",company:"Saint-Gobain Research · Northborough, MA",
+    desc:"Built a Python ML tool that optimized roofing plant production scheduling, delivering ~10% productivity gains and ~$1.5M projected annual EBITDA uplift.",
+    problem:"Manual production scheduling at a roofing manufacturing plant was inefficient, failing to account for machine constraints, throughput variability, and optimal sequencing — leaving significant capacity and margin on the table.",
+    process:"Developed a Python ML optimization model incorporating machine-specific constraints, throughput variability, and operational sequencing logic. Replaced the manual scheduling process with a dynamically generated optimal schedule, validated against historical plant data.",
+    result:"~10% productivity improvement and estimated $1–1.5M annual EBITDA uplift. Model adopted by plant operations team and integrated into production planning.",
+    learnings:"Translating a working model into something plant operators would actually trust required as much communication as it did engineering. I learned that the bottleneck in applied ML is rarely the algorithm — it's the interface between the technical solution and the people who have to use it.",
+    skills:["Python","Machine Learning","Operations Research","Optimization","Manufacturing Systems"]
+  },
+  {
+    title:"EV Electrification Health Impact Model",year:"2021–2022",company:"NSF ASPIRE ERC · CU Boulder",
+    desc:"Built a Python techno-economic model linking heavy-duty vehicle (HDV) electrification to $55.5M in quantified avoided health costs across the Denver metro area.",
+    problem:"Policymakers and infrastructure planners lacked a rigorous, spatially explicit tool to quantify the monetary health benefits of electrifying heavy-duty vehicle fleets at a metropolitan scale — making it difficult to justify investment in charging infrastructure.",
+    process:"Built a reduced-complexity air pollution dispersion model in Python, linking HDV emissions reductions to changes in PM2.5, NOx, and NH3 concentrations. Applied health response functions and EPA per-ton social cost estimates. Integrated GIS-based neighborhood equity analysis to assess distributional impacts.",
+    result:"$55.5M total avoided health costs quantified under full HDV electrification (PM2.5: $39.4M, NOx: $38.4M, NH3: $1.1M). Presented to NSF ASPIRE Engineering Research Center. Findings supported metropolitan infrastructure investment decisions.",
+    learnings:"This project showed me how engineering modeling can directly inform policy. Putting a dollar figure on air quality improvements made the case for electrification in a language that resonated with decision-makers — bridging the gap between environmental science and investment justification.",
+    skills:["Python","Air Pollution Modeling","GIS","Techno-Economic Modeling","Health Economics","Environmental Policy"]
+  },
+  {
+    title:"Robotic Surgery Device Adapter",year:"2022–2023",company:"Medtronic · CU Boulder Senior Design",
+    desc:"Led a team of 7 to design an adapter enabling Medtronic's Hugo™ robotic surgery platform to operate hand-held laparoscopic instruments. Design patent pending.",
+    problem:"Medtronic's Hugo™ robotic-assisted surgery system could not hold or operate existing hand-held laparoscopic instruments (LigaSure XP & Sonicision Sabre 7+), requiring expensive device-specific re-engineering for each tool.",
+    process:"As Project Manager, led a 7-person team through full design cycle: requirements definition, decision matrix, SolidWorks CAD, rapid prototyping, and mechanical testing. Developed a custom gear train, linear actuation carriages, and SIM-connected rotational inputs housed in a toolless-assembly mold.",
+    result:"Fully functional adapter delivered below 275 N-mm torque limit. Assembly time cut ~50%. Design patent pending. Showcased at CU Design Expo and featured in CU Boulder Mechanical Engineering press.",
+    learnings:"Managing six engineers with different working styles under a hard deadline — while staying hands-on with CAD and testing — was the most demanding leadership experience of my undergraduate career. I learned that good project management means setting a direction clearly enough that the team can move fast even when you're not in the room.",
+    skills:["SolidWorks","Gear Design","Linear Actuation","Mechanical Testing","Project Management","Patent Documentation"]
+  },
+];
+
+const otherProjects=[
+  {
+    title:"Turnaround Risk Register",year:"2021",location:"Phillips 66 · Billings, MT",
+    desc:"Developed a pre-turnaround risk register and contingency plans for a major refinery turnaround.",
+    problem:"The Billings refinery lacked a structured framework for pre-identifying and pricing discovery risks before a major turnaround — leaving the team exposed to unplanned schedule and cost overruns.",
+    process:"Reviewed P&IDs, equipment files, and historical turnaround records to identify high-risk items. Developed evergreen hydrotest value documentation and authored a site-wide Quality Handbook covering torquing specs, PMI, and safety protocols, distributed to all contractors and engineers.",
+    result:"$100K+ in operational risk mitigated. Quality handbook adopted site-wide. Zero major unplanned events during turnaround execution.",
+    learnings:"This was my first exposure to how real industrial risk management works — far more systematic and document-driven than any classroom case. Seeing how a good quality handbook actually changes behavior on a live refinery turnaround made me understand the link between technical rigor and operational safety.",
+    skills:["Risk Assessment","P&ID Review","Technical Documentation","Turnaround Management","Quality Systems"]
+  },
+  {
+    title:"Environmental Protection System Upgrade",year:"2022",location:"Phillips 66 · Sweeny, TX",
+    desc:"Oversaw installation of 2oo3 voting logic on dP transmitters for thermal oxidizers, eliminating single-point failure risk on environmental compliance systems.",
+    problem:"Unit 84 thermal oxidizers relied on single-point differential pressure measurements for environmental protection — a single-point failure risk that could result in environmental non-compliance and regulatory exposure.",
+    process:"Scoped the instrumentation upgrade with contractors, selected transmitter configurations for 2oo3 voting logic, managed pricing and purchase orders, and oversaw field construction through safe commissioning.",
+    result:"Zero-incident construction execution. Environmental protection reliability improved. Single-point failure risk eliminated on critical compliance instrumentation.",
+    learnings:"I learned how environmental compliance is actually enforced at the instrument level — and how small capital decisions (two new transmitters) can carry large regulatory and reputational implications. It shaped how I think about the relationship between engineering decisions and business risk.",
+    skills:["Instrumentation","Safety Systems","2oo3 Voting Logic","Environmental Compliance","Construction Oversight","P&ID Review"]
+  },
+  {
+    title:"Lube Oil Degassing System Design",year:"2022",location:"Phillips 66 · Sweeny, TX",
+    desc:"Scoped and executed a $180K venturi system to extract dissolved gases from a lube oil reservoir, improving safety and operational reliability.",
+    problem:"A lube oil reservoir was accumulating dissolved gases, creating a safety and reliability hazard with no existing extraction system in place.",
+    process:"Identified tie-in points via field walk-downs, prepared price estimates, engaged contractors, issued purchase orders, and managed construction through safe commissioning. Coordinated with operations and safety teams throughout.",
+    result:"$180K CAPEX project delivered on schedule. Dissolved gas hazard mitigated. Zero-incident construction. Improved lube oil system reliability.",
+    learnings:"Running a capital project from walk-down to commissioning as an intern taught me how much of engineering is coordination — managing contractors, timing procurement, and keeping multiple stakeholders aligned. It was my first experience owning an outcome from start to finish.",
+    skills:["CAPEX Scoping","Contractor Management","Field Engineering","Hazard Mitigation","Construction Oversight"]
+  },
+  {
+    title:"Line 2 Efficiency Kaizen",year:"2024",location:"Saint-Gobain GCP · Mt. Pleasant, SC",
+    desc:"Led a cross-functional tiger team to diagnose and address efficiency losses on a BITUTHENE waterproofing membrane production line that had recently absorbed increased volume from a closed facility.",
+    problem:"Line 2 at the Mt. Pleasant GCP roofing plant had taken on production previously run in Little Rock, AR, with new shifts added but no corresponding improvement in throughput. A fishbone analysis identified losses across four categories: machine reliability (RA contamination, sprocket/chain failures, glue system downtime), transportation bottlenecks between Line 2 and IMC, scrap tracking gaps, and lack of real-time escalation when scrap rates spiked.",
+    process:"Led a tiger team through Saint-Gobain's Essentials of Manufacturing (EOM) framework. Conducted floor observations — including witnessing 20 scrap rolls before noon in a single shift. Built a fishbone diagram to structure root causes across Man, Method, Machine, and Transportation. Developed day-to-day fixes (EWO process, end-of-shift reporting, plasma coating for backing plate at $2,100, PLC-integrated glue system auto-start) and a big-scale layout redesign rerouting the Line 2-to-IMC floor conveyor path to eliminate a major material handling bottleneck.",
+    result:"Delivered a full improvement roadmap spanning immediate fixes and capital proposals. Recommendations included a revised pneumatic tensioning system for the sprocket/chain, plasma-coated hopper drain pans ($7,400 each), PLC-automated glue heating, and a plant layout rework to shorten and clear the Line 2-to-IMC transport path. Presented to plant management on 15 March 2024.",
+    learnings:"Spending time on the floor before touching any data was the most valuable part of this project. A systematic fishbone forced the team to separate symptoms from causes — and I learned that in manufacturing, the biggest efficiency gains are often hiding in the handoffs between stations, not in the machines themselves.",
+    skills:["EOM / Lean Manufacturing","Fishbone (Ishikawa) Analysis","Root Cause Analysis","Cross-Functional Team Leadership","Capital Scoping","Plant Layout Design","PLC Systems","Six Sigma"]
+  },
+  {
+    title:"Adaptive Chemistry Lab Equipment",year:"2021",location:"CU Boulder · Mechanical Engineering",
+    desc:"Designed adaptive lab equipment enabling a student with paraplegia to participate fully in AP Chemistry labs alongside peers.",
+    problem:"A local high school student with paraplegia was excluded from AP Chemistry labs due to inaccessible standard equipment — unable to perform titrations, handle glassware, or reach lab benches safely.",
+    process:"Applied human-centered design methodology in direct collaboration with the student throughout. Iterated prototypes addressing grip adaptation, reach extension, and glassware stability. Tested with the student at each stage to validate usability and safety.",
+    result:"Fully functional adaptive solution delivered. Student participated in all AP Chemistry labs alongside peers. Recognized by CU Boulder College of Engineering.",
+    learnings:"Working directly with the person you're designing for — and letting their feedback drive iteration — was transformative. It reinforced that the best engineering solutions emerge from deep listening, not assumptions. That lesson applies as much to financial modeling as it does to product design.",
+    skills:["Human-Centered Design","Prototyping","Accessibility Engineering","Iterative Design","User Testing"]
+  },
 ];
 
 const mscProjects=[
@@ -688,19 +801,20 @@ const mscProjects=[
   {title:"ERCOT Electricity Market Analysis",type:"MSc · Energy Economics · ESCP",desc:"Winter Storm Uri's $9,000/MWh price spike analyzed through Hayek's dispersed knowledge framework.",problem:"Winter Storm Uri (Feb 2021) raised fundamental questions about energy-only market design after prices hit $9,000/MWh.",process:"Applied Hayek's dispersed knowledge and Menger's marginal value theory. Modeled supply/demand comparative statics. Evaluated post-Uri reforms.",result:"Demonstrated the price spike correctly communicated scarcity. Political response weakened investment incentives.",skills:["Electricity Markets","ERCOT","Scarcity Pricing","Energy Economics"]},
   {title:"France's Nuclear Renaissance",type:"MSc · Energy Policy · ESCP",desc:"Strategic analysis of EDF's role as state-backed champion and the EPR2 build-out roadmap.",problem:"France's nuclear fleet faces aging infrastructure and investment gaps while being Europe's clean energy security centerpiece.",process:"Analyzed France's nuclear policy, EDF's renationalization, regulatory framework, EPR2 risks, and comparative analysis with UK and Finnish programs.",result:"Recommended ring-fenced EDF project finance structures, accelerated workforce rebuild, and EU CfD mechanisms.",skills:["Nuclear Policy","EDF","Energy Security","Project Finance","EU Regulation"]},
   {title:"LG Chem Climate Change Strategy",type:"MSc · Sustainability · ESCP",desc:"Climate exposure assessment and sustainability roadmap — battery materials leadership vs. petrochemical revenue.",problem:"LG Chem operates at the intersection of climate solution (battery materials) and climate problem (petrochemicals).",process:"Assessed physical and transition climate risks. Developed carbon accounting framework, competitive landscape, net-zero transition pathway.",result:"3-horizon sustainability roadmap with carbon accounting, competitor positioning, and investor ESG communication strategy.",skills:["Climate Strategy","Carbon Accounting","ESG","Battery Materials"]},
+  {title:"NextEra Energy Equity Valuation",type:"MSc · Finance · ESCP",desc:"Comprehensive equity valuation of NextEra Energy — world's largest generator of renewable energy from wind and solar.",problem:"Valuing a utility-scale renewables platform requires integrating regulated utility cash flows, contracted wind/solar assets, and rate-base growth — distinct from conventional energy company valuation.",process:"Applied DCF analysis, comparable companies, and precedent transactions via Bloomberg. Built commodity price and discount rate sensitivity scenarios. Synthesized into a formal investment recommendation.",result:"Investment recommendation supported by multi-method valuation. Sensitivity analysis across WACC and power price assumptions stress-tested the bull and bear cases.",skills:["Equity Valuation","DCF","Comparable Companies","Precedent Transactions","Bloomberg","Renewables Finance"]},
 ];
 
 /* ── BUILD ENGINEERING CAROUSEL (INFINITE, GLITCH-FREE) ── */
 (function(){
   const track=document.getElementById('engTrack');
   const colors=[['#3e1f47','#5a0fa0'],['#5a0fa0','#6b1cb8'],['#6b1cb8','#3e1f47'],['#3e1f47','#6b1cb8'],['#5a0fa0','#3e1f47'],['#6b1cb8','#5a0fa0']];
-  const ORIG_COUNT=engProjects.length;
-  const CARD_W=344; // card width 320 + gap 24
-  const SETS=3; // triple the cards so we always have room either direction
+  const allCards=[...engProjects,{title:'Other Projects',company:'Phillips 66 · Saint-Gobain · CU Boulder',year:'2021–2024',desc:'Turnaround Risk Register, Environmental Protection System, Lube Oil Degassing, Line 2 Efficiency Kaizen, Adaptive Chemistry Lab Equipment.',_isOther:true}];
+  const ORIG_COUNT=allCards.length;
+  const CARD_W=344;
+  const SETS=3;
 
-  // Build 3 full sets
   for(let s=0;s<SETS;s++){
-    engProjects.forEach((p,i)=>{
+    allCards.forEach((p,i)=>{
       const c=colors[i%colors.length];
       const div=document.createElement('div');
       div.className='proj-card';
@@ -710,106 +824,84 @@ const mscProjects=[
         </div>
         <div class="proj-card-overlay">
           <h3>${p.title}</h3>
-          <p>${p.desc}</p>
-          <span class="card-cta">View Details →</span>
+          <p>${p._isOther ? p.desc : (p.year ? p.year+' · ' : '')+p.company}</p>
+          <span class="card-cta">${p._isOther ? 'Browse Projects →' : 'View Details →'}</span>
         </div>`;
-      div.addEventListener('click',()=>openModal(p));
+      if(p._isOther){
+        div.addEventListener('click',()=>openOtherModal());
+      } else {
+        div.addEventListener('click',()=>openModal(p));
+      }
       track.appendChild(div);
     });
   }
 
   const outer=document.getElementById('engCarousel');
-  const SET_W=ORIG_COUNT*CARD_W; // width of one full set in px
-  // Start in the middle set so we can go both directions freely
+  const SET_W=ORIG_COUNT*CARD_W;
   let pos=SET_W;
-  const AUTO_SPEED=1.7; // pixels per frame auto-scroll (faster)
-  let velX=0;
-  let paused=false;
-  let dragging=false;
-  let startX=0,startPos=0,lastX=0,lastT=0;
-  let rafId=null;
+  const AUTO_SPEED=1.7;
+  let velX=0,paused=false,dragging=false,startX=0,startPos=0,lastX=0,lastT=0;
 
-  // Disable CSS transition on track — we control it entirely via JS
   track.style.transition='none';
   track.style.transform=`translateX(${-pos}px)`;
 
   function wrap(){
-    // Seamlessly jump when we drift past the middle set boundary
-    // This is done WITHOUT any visual frame — pos stays the same relative to content
     if(pos<SET_W*0.5){pos+=SET_W;}
     if(pos>SET_W*1.5){pos-=SET_W;}
   }
-
   function tick(){
     if(!dragging){
-      if(!paused){
-        // Decay velocity, add auto speed
-        velX*=0.88;
-        pos+=AUTO_SPEED+velX;
-      } else {
-        // Still paused: just decay velocity, don't auto-scroll
-        velX*=0.88;
-        pos+=velX;
-      }
+      velX*=0.88;
+      pos+=(!paused?AUTO_SPEED:0)+velX;
     }
     wrap();
     track.style.transform=`translateX(${-pos}px)`;
-    rafId=requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
   }
   tick();
 
-  // Arrows — big impulse, not added to continuous velocity
-  document.getElementById('engPrev').addEventListener('click',()=>{velX=-80;paused=false;});
-  document.getElementById('engNext').addEventListener('click',()=>{velX=80;paused=false;});
-
-  // Hover pause
+  document.getElementById('engPrev').addEventListener('click',()=>{velX=-60;paused=false;});
+  document.getElementById('engNext').addEventListener('click',()=>{velX=60;paused=false;});
   outer.addEventListener('mouseenter',()=>paused=true);
-  outer.addEventListener('mouseleave',()=>{paused=false;if(!dragging)dragging=false;});
-
-  // Drag
-  outer.addEventListener('mousedown',e=>{
-    dragging=true;paused=true;
-    startX=e.clientX;startPos=pos;
-    lastX=e.clientX;lastT=Date.now();
-    velX=0;
-    outer.style.cursor='grabbing';
-  });
-  window.addEventListener('mousemove',e=>{
-    if(!dragging)return;
-    const dx=startX-e.clientX;
-    pos=startPos+dx;
-    // Track velocity for flick
-    const now=Date.now();
-    velX=(lastX-e.clientX)/(Math.max(1,now-lastT))*16;
-    lastX=e.clientX;lastT=now;
-  });
-  window.addEventListener('mouseup',()=>{
-    if(!dragging)return;
-    dragging=false;paused=false;
-    outer.style.cursor='grab';
-    // Cap fling velocity
-    velX=Math.max(-60,Math.min(60,velX));
-  });
-
-  // Touch
-  outer.addEventListener('touchstart',e=>{
-    dragging=true;paused=true;
-    startX=e.touches[0].clientX;startPos=pos;
-    lastX=startX;lastT=Date.now();velX=0;
-  },{passive:true});
-  outer.addEventListener('touchmove',e=>{
-    if(!dragging)return;
-    const dx=startX-e.touches[0].clientX;
-    pos=startPos+dx;
-    const now=Date.now();
-    velX=(lastX-e.touches[0].clientX)/(Math.max(1,now-lastT))*16;
-    lastX=e.touches[0].clientX;lastT=now;
-  },{passive:true});
-  outer.addEventListener('touchend',()=>{
-    dragging=false;paused=false;
-    velX=Math.max(-60,Math.min(60,velX));
-  });
+  outer.addEventListener('mouseleave',()=>{paused=false;dragging=false;});
+  outer.addEventListener('mousedown',e=>{dragging=true;paused=true;startX=e.clientX;startPos=pos;lastX=e.clientX;lastT=Date.now();velX=0;outer.style.cursor='grabbing';});
+  window.addEventListener('mousemove',e=>{if(!dragging)return;pos=startPos+(startX-e.clientX);const now=Date.now();velX=(lastX-e.clientX)/(Math.max(1,now-lastT))*16;lastX=e.clientX;lastT=now;});
+  window.addEventListener('mouseup',()=>{if(!dragging)return;dragging=false;paused=false;outer.style.cursor='grab';velX=Math.max(-60,Math.min(60,velX));});
+  outer.addEventListener('touchstart',e=>{dragging=true;paused=true;startX=e.touches[0].clientX;startPos=pos;lastX=startX;lastT=Date.now();velX=0;},{passive:true});
+  outer.addEventListener('touchmove',e=>{if(!dragging)return;pos=startPos+(startX-e.touches[0].clientX);const now=Date.now();velX=(lastX-e.touches[0].clientX)/(Math.max(1,now-lastT))*16;lastX=e.touches[0].clientX;lastT=now;},{passive:true});
+  outer.addEventListener('touchend',()=>{dragging=false;paused=false;velX=Math.max(-60,Math.min(60,velX));});
 })();
+
+/* ── OTHER PROJECTS MODAL ── */
+function openOtherModal(){
+  document.getElementById('modalTitle').textContent='Other Projects';
+  document.getElementById('modalType').textContent='Phillips 66 · Saint-Gobain · CU Boulder · 2021–2024';
+  // Hide standard sections, show custom list
+  ['modalProblem','modalProcess','modalResult','modalLearnings'].forEach(id=>{
+    document.getElementById(id).closest('.modal-section').style.display='none';
+  });
+  // Hide back button
+  const backBtn=document.getElementById('modalBackBtn');
+  if(backBtn) backBtn.style.display='none';
+  const sk=document.getElementById('modalSkills');
+  sk.innerHTML='';
+  // Build mini-list of other projects
+  const list=document.createElement('div');
+  list.style.cssText='display:flex;flex-direction:column;gap:14px;margin-top:8px';
+  otherProjects.forEach(p=>{
+    const item=document.createElement('div');
+    item.style.cssText='padding:14px 16px;background:rgba(62,31,71,0.04);border-left:3px solid rgba(255,121,0,0.3);cursor:pointer;transition:background .2s,border-color .2s';
+    item.innerHTML=`<div style="font-family:var(--serif);font-size:0.9rem;color:var(--navy);font-weight:700;margin-bottom:3px">${p.title}</div><div style="font-size:0.7rem;color:var(--muted);letter-spacing:0.05em">${p.year} · ${p.location}</div><div style="font-size:0.78rem;color:var(--text);font-weight:300;margin-top:6px;line-height:1.6">${p.desc}</div>`;
+    item.addEventListener('mouseenter',()=>{item.style.background='rgba(255,121,0,0.06)';item.style.borderLeftColor='var(--gold)';});
+    item.addEventListener('mouseleave',()=>{item.style.background='rgba(62,31,71,0.04)';item.style.borderLeftColor='rgba(255,121,0,0.3)';});
+    item.addEventListener('click',()=>openModal(p,true));
+    list.appendChild(item);
+  });
+  sk.appendChild(list);
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('modalBg').classList.add('open');
+  document.body.style.overflow='hidden';
+}
 
 /* ── MSC SNAPSHOT STACK ── */
 (function(){
@@ -824,15 +916,26 @@ const mscProjects=[
 })();
 
 /* ── MODAL ── */
-function openModal(p){
+function openModal(p, fromOther=false){
+  // Restore all sections
+  ['modalProblem','modalProcess','modalResult','modalLearnings'].forEach(id=>{
+    document.getElementById(id).closest('.modal-section').style.display='block';
+  });
+  // Back button
+  const backBtn=document.getElementById('modalBackBtn');
+  if(backBtn){
+    backBtn.style.display=fromOther?'inline-flex':'none';
+  }
   document.getElementById('modalTitle').textContent=p.title;
-  document.getElementById('modalType').textContent=p.type;
+  document.getElementById('modalType').textContent=p.type||p.location||'';
   document.getElementById('modalProblem').textContent=p.problem;
   document.getElementById('modalProcess').textContent=p.process;
   document.getElementById('modalResult').textContent=p.result;
+  document.getElementById('modalLearnings').textContent=p.learnings||'';
+  document.getElementById('modalLearnings').closest('.modal-section').style.display=p.learnings?'block':'none';
   const sk=document.getElementById('modalSkills');
   sk.innerHTML='';
-  p.skills.forEach(s=>{const sp=document.createElement('span');sp.className='modal-skill';sp.textContent=s;sk.appendChild(sp);});
+  (p.skills||[]).forEach(s=>{const sp=document.createElement('span');sp.className='modal-skill';sp.textContent=s;sk.appendChild(sp);});
   document.getElementById('modal').classList.add('open');
   document.getElementById('modalBg').classList.add('open');
   document.body.style.overflow='hidden';
