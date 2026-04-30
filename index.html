@@ -127,8 +127,8 @@ section{min-height:100vh;position:relative}
 /* default visible, hover hidden */
 .biz-btn-default{opacity:1}
 .biz-btn-hover{opacity:0;position:absolute!important;top:0;left:0}
-.business-btn:hover .biz-btn-default{opacity:0}
-.business-btn:hover .biz-btn-hover{opacity:1}
+.business-btn:hover .biz-btn-default,.business-btn.touched .biz-btn-default{opacity:0}
+.business-btn:hover .biz-btn-hover,.business-btn.touched .biz-btn-hover{opacity:1}
 
 /* BUSINESS PAGE MODAL */
 .biz-overlay{position:fixed;inset:0;z-index:1000;opacity:0;pointer-events:none;transition:opacity .4s ease;background:rgba(62,31,71,0.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;overflow-y:auto;padding:20px}
@@ -412,7 +412,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,121,0,0.15);padding:
       <div class="business-btn-wrap" id="bizBtnWrap">
         <button class="business-btn" id="bizBtn" onclick="openBizPage()" aria-label="Open Business Page">
           <img class="biz-btn-default" src="https://i.ibb.co/67XppmG2/Business-11.png" alt="Business"/>
-          <img class="biz-btn-hover"   src="https://i.ibb.co/Q7czM1Xb/Business.png"    alt="Business hover"/>
+          <img class="biz-btn-hover"   src="https://i.ibb.co/Qv81Njch/Business.png"    alt="Business hover"/>
         </button>
       </div>
     </div>
@@ -1336,6 +1336,18 @@ function closeBizPopup(){
     spawn();
     if(!active){active=true;loop();}
   });
+
+  /* ── MOBILE TOUCH: toggle hover image + confetti ── */
+  btn.addEventListener('touchstart', e=>{
+    e.preventDefault();
+    const isHovered = btn.classList.toggle('touched');
+    if(isHovered){
+      canvas.style.display='block';
+      particles=[];
+      spawn();
+      if(!active){active=true;loop();}
+    }
+  },{passive:false});
 })();
 </script>
 </body>
