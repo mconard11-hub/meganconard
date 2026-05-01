@@ -115,12 +115,12 @@ section{min-height:100vh;position:relative}
 .btn-resume{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--cream);padding:14px 32px;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border:1.5px solid transparent;transition:all .3s}
 .btn-resume:hover{background:transparent;border-color:var(--navy);color:var(--navy)}
 .btn-resume svg{width:14px;height:14px;fill:currentColor}
-@media(max-width:900px){#about{padding:80px 24px}.about-wrap{grid-template-columns:1fr;gap:40px}.about-photo-frame::before{display:none}}
+@media(max-width:900px){#about{padding:80px 24px}.about-wrap{grid-template-columns:1fr;gap:40px}.about-photo-frame::before{display:none}.business-btn-wrap{display:none}}
 
 /* BUSINESS PAGE BUTTON */
 .business-btn-wrap{display:flex;justify-content:center;margin-top:20px;position:relative;z-index:3}
 .biz-confetti-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9998;display:none}
-.business-btn{background:none;border:none;padding:0;cursor:pointer;display:block;width:min(200px,90%);transition:transform .3s cubic-bezier(0.34,1.3,0.64,1),filter .3s;position:relative;z-index:5}
+.business-btn{background:none;border:none;padding:0;cursor:pointer;display:block;width:100px;transition:transform .3s cubic-bezier(0.34,1.3,0.64,1),filter .3s;position:relative;z-index:5;flex-shrink:0}
 .business-btn:hover{transform:scale(1.04);filter:drop-shadow(0 6px 18px rgba(62,31,71,0.22))}
 .business-btn img{width:100%;height:auto;display:block;position:absolute;top:0;left:0;transition:opacity .25s ease}
 .business-btn img:last-child{position:relative}
@@ -130,7 +130,8 @@ section{min-height:100vh;position:relative}
 .business-btn:hover .biz-btn-default,.business-btn.touched .biz-btn-default{opacity:0}
 .business-btn:hover .biz-btn-hover,.business-btn.touched .biz-btn-hover{opacity:1}
 
-/* BUSINESS PAGE MODAL */
+.business-btn-wrap--mobile{display:none}
+@media(max-width:900px){.business-btn-wrap--mobile{display:flex;justify-content:center;margin-top:24px}}
 .biz-overlay{position:fixed;inset:0;z-index:1000;opacity:0;pointer-events:none;transition:opacity .4s ease;background:rgba(62,31,71,0.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;overflow-y:auto;padding:20px}
 .biz-overlay.open{opacity:1;pointer-events:all}
 .biz-modal-inner{position:relative;display:inline-block;line-height:0;max-width:92vw;max-height:88vh}
@@ -423,6 +424,12 @@ footer{background:var(--navy);border-top:1px solid rgba(255,121,0,0.15);padding:
       <p class="about-bio">I hold a degree in <strong>Mechanical Engineering</strong> from the University of Colorado Boulder and worked for two years at <strong>Saint-Gobain</strong>. First, as a research engineer for carbon capture technology and then exploring sustainability process solutions for gypsum board.</p>
       <p class="about-bio">While working in engineering, I came to understand that investment decisions in energy require both <strong>financial rigor and a clear understanding of the operational drivers</strong> that underpin asset performance. Without the financial drivers, it doesn't matter how good the technical solution, a project will end.</p>
       <p class="about-bio">Now, I am completing an <strong>MSc in Energy Management</strong> with a specialization in Finance and Investment at ESCP Business School to learn these drivers.</p>
+      <div class="business-btn-wrap business-btn-wrap--mobile" id="bizBtnWrapMobile">
+        <button class="business-btn business-btn--mobile" onclick="openBizPage(); if(window._bizBtnMobileTouch){}" aria-label="Open Business Page">
+          <img class="biz-btn-default" src="https://i.ibb.co/67XppmG2/Business-11.png" alt="Business"/>
+          <img class="biz-btn-hover"   src="https://i.ibb.co/Qv81Njch/Business.png"    alt="Business hover"/>
+        </button>
+      </div>
       <div class="edu-box">
         <h4>Education</h4>
         <div class="edu-item">
@@ -1338,16 +1345,19 @@ function closeBizPopup(){
   });
 
   /* ── MOBILE TOUCH: toggle hover image + confetti ── */
-  btn.addEventListener('touchstart', e=>{
-    e.preventDefault();
-    const isHovered = btn.classList.toggle('touched');
-    if(isHovered){
-      canvas.style.display='block';
-      particles=[];
-      spawn();
-      if(!active){active=true;loop();}
-    }
-  },{passive:false});
+  const mobileBtns = [btn, document.getElementById('bizBtnWrapMobile')?.querySelector('.business-btn')].filter(Boolean);
+  mobileBtns.forEach(b => {
+    b.addEventListener('touchstart', e=>{
+      e.preventDefault();
+      const isHovered = b.classList.toggle('touched');
+      if(isHovered){
+        canvas.style.display='block';
+        particles=[];
+        spawn();
+        if(!active){active=true;loop();}
+      }
+    },{passive:false});
+  });
 })();
 </script>
 </body>
