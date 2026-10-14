@@ -507,6 +507,154 @@ nav{gap:24px}
   .modal-img{max-width:100%}
 }
 </style>
+<style>
+/* ENGINEERING: 3D circular gallery */
+.ring-stage{position:relative;height:540px;perspective:2000px;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;outline:none}
+.ring-stage:active{cursor:grabbing}
+.ring{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.ring-card.proj-card{position:absolute;left:50%;top:50%;width:320px;height:430px;margin:-215px 0 0 -160px;background:#FFFCEB;border:1px solid rgba(61,74,44,0.16);box-shadow:0 18px 40px rgba(61,74,44,0.16);backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:opacity .3s linear,border-color .2s}
+.ring-card.is-front{border-color:var(--navy)}
+.ring-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.ring-controls{justify-content:center;padding-top:8px}
+@media(max-width:768px){
+  .ring-stage{height:470px}
+  .ring-card.proj-card{width:260px;height:400px;margin:-200px 0 0 -130px}
+}
+</style>
+<style>
+/* PHONE BOTTOM NAV (pill bar, expands the active label) */
+.bnav{display:none}
+@media(max-width:768px){
+  .hamburger{display:none!important}
+  .nav-links{display:none!important}
+  .bnav{position:fixed;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom));margin:0 auto;width:fit-content;max-width:95vw;z-index:450;
+    display:flex;align-items:center;gap:2px;height:52px;padding:6px;border-radius:999px;
+    background:#FFFCEB;border:1px solid rgba(61,74,44,0.16);box-shadow:0 14px 34px rgba(61,74,44,0.2);
+    animation:bnav-in .45s cubic-bezier(.34,1.56,.64,1) both}
+  footer{padding-bottom:100px}
+}
+@keyframes bnav-in{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.bnav-btn{display:flex;align-items:center;height:40px;min-width:40px;padding:0 9px;border:none;border-radius:999px;background:transparent;color:var(--muted);
+  font-family:var(--sans);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s,color .2s,transform .1s}
+.bnav-btn:active{transform:scale(.97)}
+.bnav-btn svg{width:21px;height:21px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bnav-btn:hover{background:rgba(61,74,44,0.06)}
+.bnav-btn.active{background:rgba(61,74,44,0.1);color:var(--navy)}
+.bnav-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.bnav-label{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:0;margin-left:0;opacity:0;
+  font-size:0.74rem;font-weight:600;letter-spacing:0.02em;
+  transition:max-width .42s cubic-bezier(.34,1.3,.64,1),margin-left .19s,opacity .19s}
+.bnav-btn.active .bnav-label{max-width:76px;margin-left:7px;opacity:1}
+@media(prefers-reduced-motion:reduce){.bnav{animation:none}.bnav-label{transition:none}}
+</style>
+<style>
+/* LANDING ICONS ON A MOVING RING (rise in, turn with scroll); the static layout is the fallback */
+#home .home-inner{z-index:1}
+#home.ring-on .orbit-card{position:absolute!important;left:0!important;top:0!important;transform:none!important;filter:none;will-change:translate;
+  transition:scale .3s cubic-bezier(0.34,1.3,0.64,1),filter .3s}
+#home.ring-on .orbit-card:hover{transform:none!important;scale:1.12;filter:drop-shadow(0 8px 20px rgba(61,74,44,0.28))}
+@media(max-width:639px){
+  #home.ring-on{align-items:center;padding-top:80px}
+  #home.ring-on .home-inner{width:min(700px,94vw);aspect-ratio:1;flex-direction:row}
+  #home.ring-on .orbit-ring{position:absolute;inset:0;display:block;padding:0}
+  #home.ring-on .home-center h1{font-size:1.85rem}
+}
+@media(prefers-reduced-motion:reduce){#home.ring-on .orbit-card{transition:none}}
+</style>
+<style>
+/* Carousel arrows sit on the carousel's left and right edges, above the cards */
+.ring-wrap{position:relative}
+.ring-wrap .carousel-arrow{z-index:20}
+.ring-wrap .carousel-arrow.prev{left:24px}
+.ring-wrap .carousel-arrow.next{right:24px}
+@media(max-width:768px){.ring-wrap .carousel-arrow.prev{left:10px}.ring-wrap .carousel-arrow.next{right:10px}}
+</style>
+<style>
+/* PHONES: Engineering projects as a throwable card deck (desktop keeps the 3D oval) */
+.eng-deck{display:none}
+@media(max-width:768px){
+  #eng-projects .ring-wrap,#eng-projects .ring-controls{display:none}
+  .eng-deck{display:flex;flex-direction:column;align-items:center;gap:28px;padding:56px 16px 8px;outline:none;overflow:hidden}
+  .eng-deck:focus-visible{box-shadow:inset 0 0 0 2px var(--navy)}
+  .cd-deck{position:relative;width:min(82vw,340px);height:410px;touch-action:pan-y}
+  .cd-deck .deck-card{position:absolute;inset:0;width:auto;height:auto;flex:none;border-radius:6px;background:#FFFCEB;border:1px solid rgba(61,74,44,0.16);
+    box-shadow:0 1px 2px rgba(0,0,0,.06),0 26px 50px -26px rgba(61,74,44,.5);
+    transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s ease,filter .4s ease;will-change:transform;user-select:none;-webkit-user-select:none}
+  .cd-deck .deck-card img{pointer-events:none;-webkit-user-drag:none}
+  .cd-deck .deck-card[data-top="1"]{cursor:grab}
+  .cd-deck .deck-card[data-mode="drag"]{cursor:grabbing;transition:none}
+  .cd-deck .deck-card[data-mode="fly"]{transition:transform .45s cubic-bezier(.3,.5,.3,1),opacity .45s ease}
+  .cd-deck .deck-card[data-mode="snap"]{transition:none}
+  .cd-meta{display:flex;align-items:center;justify-content:center;gap:28px;width:min(82vw,340px)}
+  .cd-btn{appearance:none;border:1px solid rgba(61,74,44,0.3);background:transparent;color:var(--navy);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s;-webkit-tap-highlight-color:transparent}
+  .cd-btn:active{background:var(--navy);color:var(--cream)}
+  .cd-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .cd-count{font-family:var(--serif);font-size:1rem;letter-spacing:.12em;color:var(--muted)}
+  .cd-count b{color:var(--navy);font-weight:400}
+}
+.cd-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.cd-deck .deck-card,.cd-deck .deck-card[data-mode="fly"]{transition:opacity .3s ease}}
+</style>
+<style>
+/* MASTER'S PROJECTS: on the website version each card shows the project name and flips on hover
+   to the quick overview. Phones keep the simple list. */
+.msc-snap-card .flip-inner{display:none}
+@media(min-width:769px){
+  .msc-card-stack .msc-snap-card,
+  .msc-card-stack .msc-snap-card:hover,
+  .msc-card-stack:hover .msc-snap-card,
+  .msc-card-stack:hover .msc-snap-card:hover{background:none;border:none;padding:0;opacity:1;transform:none;perspective:1000px;outline:none}
+  .msc-snap-card>h4,.msc-snap-card>p,.msc-snap-card>.snap-cta{display:none}
+  .msc-snap-card .flip-inner{display:block;position:relative;height:136px;transform-style:preserve-3d;transition:transform .7s ease}
+  .msc-snap-card.flipped .flip-inner{transform:rotateY(180deg)}
+  .msc-snap-card .flip-face{position:absolute;inset:0;padding:14px 18px;display:flex;flex-direction:column;justify-content:center;gap:6px;
+    backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(255,249,214,0.12)}
+  .msc-snap-card .flip-front{background:rgba(255,249,214,0.05)}
+  .flip-course{font-size:0.62rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold)}
+  .flip-title{font-family:var(--serif);font-size:1.05rem;line-height:1.3;color:var(--cream)}
+  .msc-snap-card .flip-back{transform:rotateY(180deg);background:#FFDCDC;border-color:#FFDCDC}
+  .msc-snap-card .flip-desc{flex-shrink:0;margin:0;font-size:0.76rem;line-height:1.5;color:var(--navy);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+  .flip-more{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy)}
+  .msc-snap-card:focus-visible .flip-face{outline:2px solid var(--gold);outline-offset:3px}
+}
+@media(min-width:769px) and (hover:hover){
+  .msc-snap-card{cursor:pointer}
+  .msc-snap-card:hover .flip-inner{transform:rotateY(180deg)}
+}
+@media(prefers-reduced-motion:reduce){.msc-snap-card .flip-inner{transition:none}}
+</style>
+<style>
+/* TOP NAV SPOTLIGHT ("limelight"): a bar on the nav's top edge shines down on the current section's word */
+.limelight{display:none}
+@media(min-width:769px){
+  .limelight{display:block;position:absolute;top:0;left:-999px;width:44px;height:5px;border-radius:0 0 999px 999px;background:var(--gold);
+    box-shadow:0 30px 18px rgba(216,162,162,0.55);pointer-events:none;z-index:0;opacity:0;transition:opacity .3s ease}
+  .limelight.ready{transition:left .4s ease-in-out,width .4s ease-in-out,opacity .3s ease}
+  .limelight.on{opacity:1}
+  .limelight-cone{position:absolute;left:-30%;top:5px;width:160%;height:52px;clip-path:polygon(5% 100%,25% 0,75% 0,95% 100%);
+    background:linear-gradient(to bottom,rgba(216,162,162,0.6),rgba(216,162,162,0.05));pointer-events:none}
+  .nav-links{position:relative;z-index:1}
+  .nav-links a{transition:color .25s,opacity .25s}
+  .nav-links.lit a{opacity:.45}
+  .nav-links.lit a.active,.nav-links a:hover{opacity:1}
+  .nav-links:hover a{opacity:.45}
+  .nav-links:hover a:hover{opacity:1}
+  .nav-links a:hover{color:var(--navy)}   /* stays readable under the rose light */
+  .nav-links a::after{display:none}
+}
+@media(prefers-reduced-motion:reduce){.limelight.ready{transition:opacity .3s ease}}
+</style>
+<style>
+/* Every pop-up: the X sits inside the top-right corner, never clipped, and stays put while the content scrolls */
+.modal-close{position:sticky;top:12px;float:right;margin:12px 12px -48px 0;z-index:10;border-radius:2px}
+@media(max-width:600px){.modal-close{margin:10px 10px -46px 0}}
+</style>
+<style>
+/* the ring is only a 3D holder: let clicks pass through it to the cards set further back */
+.ring{pointer-events:none}
+.ring-card{cursor:pointer}
+.ring-stage:active .ring-card{cursor:grabbing}
+</style>
 </head>
 <body>
 <div id="mc-cursor"></div>
@@ -520,6 +668,7 @@ nav{gap:24px}
     <li><a href="#skills">Skills</a></li>
     <li><a href="#press">Press</a></li>
   </ul>
+  <div class="limelight" id="limelight" aria-hidden="true"><div class="limelight-cone"></div></div>
   <div class="lang-switch" aria-label="Language"><button type="button" data-l="en">EN</button><span>|</span><button type="button" data-l="fr">FR</button></div>
   <div class="hamburger" id="hamburger" onclick="toggleNav()">
     <span></span><span></span><span></span>
@@ -726,16 +875,29 @@ nav{gap:24px}
     <div class="section-label">Portfolio</div>
     <h2 class="section-title">Engineering Projects</h2>
   </div>
-  <div class="carousel-wrapper">
+  <div class="ring-wrap">
+    <div class="ring-stage" id="engStage" role="region" aria-roledescription="carousel" aria-label="Engineering projects">
+      <div class="ring" id="engRing"></div>
+    </div>
     <button class="carousel-arrow prev" id="engPrev" aria-label="Previous">
       <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
     </button>
-    <div class="carousel-outer" id="engCarousel">
-      <div class="carousel-track" id="engTrack"></div>
-    </div>
     <button class="carousel-arrow next" id="engNext" aria-label="Next">
       <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
     </button>
+  </div>
+  <span class="cd-sr" id="engCount" aria-live="polite"></span>
+  <div class="eng-deck" id="engDeck" role="region" aria-roledescription="carousel" aria-label="Engineering projects" tabindex="0">
+    <div class="cd-deck" id="engDeckCards"></div>
+    <div class="cd-meta">
+      <button type="button" class="cd-btn" id="engDeckPrev" aria-label="Previous">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+      <button type="button" class="cd-btn" id="engDeckNext" aria-label="Next">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+    </div>
+    <div class="cd-sr" id="engDeckLive" aria-live="polite"></div>
   </div>
   <div class="other-projects-btn-wrap">
     <button class="other-projects-btn" id="otherProjectsBtn" onclick="openOtherModal()">
@@ -885,6 +1047,7 @@ nav{gap:24px}
   <div class="footer-copy">&copy; 2026 Megan Conard</div>
 </footer>
 
+<div class="bnav" id="bottomNav" role="navigation" aria-label="Section navigation"></div>
 <div class="modal-bg" id="modalBg" onclick="closeModal()"></div>
 <div class="modal" id="modal">
   <button class="modal-close" onclick="closeModal()">&#x2715;</button>
@@ -968,11 +1131,16 @@ function translateIn(root){
 }
 function setLang(l){
   try{localStorage.setItem('mc-lang',l);sessionStorage.setItem('mc-scroll',String(window.scrollY));}catch(e){}
-  const u=new URL(location.href);u.searchParams.delete('lang');location.replace(u.toString());
+  /* Drop ?lang= and any #section from the address: a link like #skills would otherwise make the
+     browser just jump to that spot instead of reloading in the new language. */
+  const u=new URL(location.href);u.searchParams.delete('lang');u.hash='';
+  if(u.toString()===location.href) location.reload(); else location.replace(u.toString());
 }
+/* CSS zoom: mouse positions are in screen pixels, page styles are in zoomed pixels */
+const pageZoom=()=>parseFloat(getComputedStyle(document.documentElement).zoom)||1;
 /* ── CURSOR ── */
 const cur=document.getElementById('mc-cursor');
-document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
+document.addEventListener('mousemove',e=>{const z=pageZoom();cur.style.left=e.clientX/z+'px';cur.style.top=e.clientY/z+'px'});
 /* Hide orange dot when over icon 4 so only the custom cursor shows */
 (function(){
   const i4=document.getElementById('bizIcon4');
@@ -1004,10 +1172,133 @@ document.querySelectorAll('.orbit-card').forEach((c,i)=>{
   c.addEventListener('mouseleave',()=>hovered=false);
   (function anim(){
     const y=Math.sin(Date.now()/1000/sp+ph)*amp;
-    if(!hovered) c.style.transform=`translateY(${y}px)`;
+    if(!hovered && !document.getElementById('home').classList.contains('ring-on')) c.style.transform=`translateY(${y}px)`;
     requestAnimationFrame(anim);
   })();
 });
+
+
+/* ── LANDING ICONS ON A MOVING RING ──
+   Same motion as the template's glass spheres (rise in, settle in a ring, turn with
+   scroll), applied to the plain icon images. */
+(function(){
+  const home=document.getElementById('home');
+  const ringEl=home&&home.querySelector('.orbit-ring');
+  if(!ringEl) return;
+  const cards=[...ringEl.querySelectorAll('.orbit-card')];
+  /* clockwise from the top: About, Press, Skills, Engineering, Background */
+  const items=[0,3,4,2,1].map(i=>cards[i]).filter(Boolean);
+  const N=items.length;
+  const base=items.map(c=>parseFloat(c.style.width)||130);   /* your desktop sizes */
+  const DUR=2400, ENTRY=Math.PI/2, ARC=Math.PI/3, TRAVEL=3*Math.PI;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp=v=>Math.max(0,Math.min(1,v));
+  const smooth=v=>v*v*(3-2*v);
+
+  let W=0,H=0,cx=0,cy=0,orbit=0,k=1,frame=0,elapsed=0,prev=0,visible=true;
+  const sizes=items.map(()=>[0,0]);
+  if(reduce.matches||window.scrollY>0||(location.hash&&location.hash!=='#home')) elapsed=DUR;
+
+  home.classList.add('ring-on');
+
+  function resize(){
+    W=ringEl.clientWidth; H=home.clientHeight;
+    cx=W/2; cy=ringEl.clientHeight/2;
+    orbit=Math.min(W*0.4,H*0.36);
+    k=Math.min(1,orbit/280);                 /* shrink icons on small screens */
+    items.forEach((c,i)=>{ c.style.width=(base[i]*k)+'px'; });
+    items.forEach((c,i)=>{ sizes[i]=[c.offsetWidth,c.offsetHeight]; });
+    wake();
+  }
+
+  function scrollRotation(){
+    if(reduce.matches) return 0;
+    const b=home.getBoundingClientRect();
+    return clamp(-b.top/Math.max(1,b.height))*Math.PI*0.75;
+  }
+
+  function draw(now){
+    frame=0;
+    if(!visible) return;
+    const dt=Math.min((now-prev)/1000,0.05); prev=now;
+    if(elapsed<DUR) elapsed+=dt*1000;
+    const p=reduce.matches?1:clamp(elapsed/DUR);
+    const ease=1-Math.pow(1-p,3);
+    const rot=scrollRotation();
+    const ringTop=(ringEl.getBoundingClientRect().top-home.getBoundingClientRect().top)/pageZoom();
+    items.forEach((c,i)=>{
+      const travel=Math.max(0,TRAVEL*ease-(i/N)*Math.PI*2);
+      const arrival=smooth(clamp(travel/ARC));
+      const angle=ENTRY+travel+rot;
+      const [w,h]=sizes[i];
+      const x=cx+Math.cos(angle)*orbit-w/2;
+      const y=cy+Math.sin(angle)*orbit+(H-ringTop-cy+h-orbit)*(1-arrival)-h/2;
+      c.style.translate=`${x.toFixed(1)}px ${y.toFixed(1)}px`;
+      c.style.opacity=clamp(travel*4);
+      c.style.pointerEvents=arrival>=1?'auto':'none';
+    });
+    if(elapsed<DUR) frame=requestAnimationFrame(draw);
+  }
+
+  function wake(){
+    if(frame||!visible||document.hidden) return;
+    prev=performance.now();
+    frame=requestAnimationFrame(draw);
+  }
+
+  new IntersectionObserver(([e])=>{visible=e.isIntersecting; if(visible) wake(); else {cancelAnimationFrame(frame);frame=0;}}).observe(home);
+  new ResizeObserver(resize).observe(ringEl);
+  items.forEach(c=>{const im=c.querySelector('img'); if(im&&!im.complete) im.addEventListener('load',resize,{once:true});});
+  window.addEventListener('scroll',()=>{ if(visible) wake(); },{passive:true});
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) wake(); });
+  reduce.addEventListener('change',wake);
+  resize();
+})();
+
+/* ── TOP NAV SPOTLIGHT ── */
+(function(){
+  const nav=document.getElementById('nav');
+  const light=document.getElementById('limelight');
+  const links=[...document.querySelectorAll('#navLinks a')];
+  if(!nav||!light||!links.length) return;
+  const list=document.getElementById('navLinks');
+  const targets=links.map(a=>document.querySelector(a.getAttribute('href')));
+  let active=-1, lock=0;
+
+  let hover=-1;   /* the word under the mouse takes the light; leaving the menu returns it */
+  function place(){
+    const i=hover>=0?hover:active;
+    light.classList.toggle('on',i>=0);
+    if(i<0) return;
+    const a=links[i], nr=nav.getBoundingClientRect(), r=a.getBoundingClientRect();
+    const w=Math.max(44,r.width*0.7);
+    light.style.width=w+'px';
+    light.style.left=(r.left-nr.left+r.width/2-w/2)+'px';
+  }
+  function setActive(i){
+    if(i===active){ place(); return; }   /* re-measure: the French words are wider */
+    active=i;
+    links.forEach((a,j)=>a.classList.toggle('active',j===i));
+    list.classList.toggle('lit',i>=0);
+    place();
+  }
+  /* the current section is the last one whose top has passed the upper third of the screen */
+  function sync(){
+    if(Date.now()<lock) return;
+    const line=window.innerHeight*0.35; let cur=-1;
+    targets.forEach((t,i)=>{ if(t&&t.getBoundingClientRect().top<=line) cur=i; });
+    setActive(cur);
+  }
+  links.forEach((a,i)=>a.addEventListener('click',()=>{ setActive(i); lock=Date.now()+900; }));
+  links.forEach((a,i)=>a.addEventListener('mouseenter',()=>{ hover=i; place(); }));
+  list.addEventListener('mouseleave',()=>{ hover=-1; place(); });
+  let ticking=false;
+  window.addEventListener('scroll',()=>{ if(!ticking){ ticking=true; requestAnimationFrame(()=>{ ticking=false; sync(); }); } },{passive:true});
+  window.addEventListener('resize',place);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(place);
+  sync(); place();
+  setTimeout(()=>light.classList.add('ready'),50);   /* no slide-in on first paint */
+})();
 
 /* ── PROJECT DATA ── */
 const engProjects=[
@@ -1046,109 +1337,259 @@ const mscProjects=[
   {"title":"EU Smart Cities: Amsterdam and Beyond","type":"MSc · Digitalization · ESCP","desc":"How Amsterdam's smart city program was built, funded and copied across Europe, and why it is hard to scale.","problem":"","process":"Traced Amsterdam Smart City from its 2009 launch as a public–private foundation, including a €4M first phase funded 20% by the city, 40% by private partners and 40% by EU regional funds. Compared how the model was replicated in Northern and Eastern Europe, and mapped the EU framework around it (EIF4SCC, Living-in.EU, the Covenant of Mayors) against the energy trilemma.","result":"","skills":["Smart Cities","EU Policy","Energy Trilemma","Public–Private Funding","Digitalization"],"fr":{"title":"Villes intelligentes dans l’UE : Amsterdam et au-delà","type":"MSc · Digitalisation · ESCP","desc":"Comment le programme de ville intelligente d’Amsterdam a été conçu, financé et reproduit en Europe, et pourquoi il est difficile à déployer à grande échelle.","process":"Retour sur Amsterdam Smart City depuis son lancement en 2009 sous forme de fondation public-privé, avec une première phase de 4 M€ financée à 20 % par la ville, 40 % par des partenaires privés et 40 % par des fonds régionaux européens. Comparaison de la reproduction du modèle en Europe du Nord et de l’Est, et mise en regard du cadre européen (EIF4SCC, Living-in.EU, Convention des maires) avec le trilemme énergétique.","skills":["Villes intelligentes","Politique européenne","Trilemme énergétique","Financement public-privé","Digitalisation"]}},
 ];
 
-/* ── ENGINEERING PROJECTS: looping, steps one card at a time and holds ── */
+/* ── ENGINEERING PROJECTS: 3D circular gallery ── */
 (function(){
-  const track=document.getElementById('engTrack');
-  const outer=document.getElementById('engCarousel');
-  const N=engProjects.length, SETS=3, HOLD=1000;
-  let dragged=false;
-
-  for(let s=0;s<SETS;s++){
-    engProjects.forEach(p=>{
-      const div=document.createElement('div');
-      div.className='proj-card'+(p.img?' has-img':'');
-      div.innerHTML=`
-        ${p.img?`<div class="pc-imgwrap${p.imgFit==='contain'?' whole':''}"><img class="pc-img" src="${p.img}" alt="" loading="lazy" draggable="false"/></div>`:''}
-        <div class="pc-body">
-          <div class="pc-year">${p.year||''}</div>
-          <h3 class="pc-title">${L(p,'title')}</h3>
-          <div class="pc-co">${L(p,'company')}</div>
-          <p class="pc-desc">${L(p,'desc')}</p>
-          <span class="pc-more">${UI.readMore}</span>
-        </div>`;
-      div.addEventListener('click',()=>{ if(!dragged) openModal(p); });
-      track.appendChild(div);
-    });
-  }
-
-  const prev=document.getElementById('engPrev');
-  const next=document.getElementById('engNext');
-  const controls=document.createElement('div');
-  controls.className='carousel-controls';
-  controls.append(prev,next);
-  outer.after(controls);
-
+  const stage=document.getElementById('engStage');
+  const ring=document.getElementById('engRing');
+  const count=document.getElementById('engCount');
+  const N=engProjects.length, A=360/N;
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const EASE='transform .7s cubic-bezier(.65,0,.35,1)';
-  let index=N, busy=false, hovering=false;
-  const step=()=>track.firstElementChild.offsetWidth+24;
+  const AUTO=0.06;            /* degrees per frame when idle */
+  const SCROLL_GAIN=0.12;     /* degrees per pixel of page scroll while the section is on screen */
+  let rot=0, target=null, hovering=false, dragging=false, dragged=false, inView=false, rx=600, rz=300;
 
-  function place(animate,offset=0){
-    track.style.transition=animate&&!reduce?EASE:'none';
-    track.style.transform=`translateX(${-index*step()+offset}px)`;
+  const cards=engProjects.map((p,i)=>{
+    const el=document.createElement('div');
+    el.className='proj-card ring-card'+(p.img?' has-img':'');
+    el.setAttribute('role','group');
+    el.setAttribute('aria-label',L(p,'title'));
+    el.innerHTML=`
+      ${p.img?`<div class="pc-imgwrap${p.imgFit==='contain'?' whole':''}"><img class="pc-img" src="${p.img}" alt="" loading="lazy" draggable="false"/></div>`:''}
+      <div class="pc-body">
+        <div class="pc-year">${p.year||''}</div>
+        <h3 class="pc-title">${L(p,'title')}</h3>
+        <div class="pc-co">${L(p,'company')}</div>
+        <p class="pc-desc">${L(p,'desc')}</p>
+        <span class="pc-more">${UI.readMore}</span>
+      </div>`;
+    /* the whole card opens its project, wherever it sits on the oval (dragging doesn't count as a click) */
+    el.addEventListener('click',()=>{ if(!dragged) openModal(p); });
+    ring.appendChild(el);
+    return el;
+  });
+
+  const norm=d=>((d%360)+540)%360-180;               /* → (-180,180] */
+  const frontIndex=()=>((Math.round(-rot/A)%N)+N)%N;
+  function spinTo(i){ const want=-i*A; target=rot+norm(want-rot); if(reduce){rot=target;target=null;} }
+  function snap(){ target=Math.round(rot/A)*A; if(reduce){rot=target;target=null;} }
+
+  function layout(){
+    /* an oval: as wide as the page, shallow in depth */
+    const w=cards[0].offsetWidth, W=stage.clientWidth;
+    rx=Math.max(w*0.6,(W-w)/2-16);
+    rz=Math.max(w*0.6,Math.min(320,rx*0.5));   /* enough depth that tilted side cards stay behind the front one */
   }
-  let safety;
-  function go(d,force){
-    if(busy&&!force) return;
-    if(busy){ wrap(); void track.offsetWidth; }
-    busy=!reduce;
-    index+=d;
-    place(true);
-    if(reduce){ wrap(); return; }
-    clearTimeout(safety); safety=setTimeout(()=>{ if(busy) wrap(); },900);
+
+  function render(){
+    ring.style.transform='none';
+    const f=frontIndex();
+    cards.forEach((c,i)=>{
+      const ang=norm(i*A+rot), rel=Math.abs(ang), th=ang*Math.PI/180;
+      const x=rx*Math.sin(th*0.8), z=rz*(Math.cos(th)-1);   /* 0.8 spreads the side cards evenly to the edges */
+      c.style.transform=`translate3d(${x.toFixed(1)}px,0,${z.toFixed(1)}px) rotateY(${(-ang*0.35).toFixed(2)}deg)`;
+      const fade=Math.max(0,Math.min(1,(150-rel)/40));     /* the back of the oval fades out */
+      c.style.opacity=fade;
+      const facing=rel<110;
+      c.style.pointerEvents=facing?'auto':'none';
+      c.classList.toggle('is-front',i===f);
+      c.tabIndex=i===f?0:-1;
+    });
+    count.textContent=`${f+1} / ${N}`;
   }
-  function wrap(){
-    busy=false;
-    if(index>=2*N){index-=N;place(false);}
-    else if(index<N){index+=N;place(false);}
-  }
-  track.addEventListener('transitionend',e=>{ if(e.target===track) wrap(); });
 
-  prev.addEventListener('click',()=>go(-1,true));
-  next.addEventListener('click',()=>go(1,true));
+  (function loop(){
+    if(target!==null){
+      const d=target-rot; rot+=d*0.12;
+      if(Math.abs(d)<0.05){ rot=target; target=null; }
+    }else if(!reduce&&!dragging&&!hovering&&inView&&!document.hidden&&!document.getElementById('modal').classList.contains('open')){
+      rot-=AUTO;
+    }
+    render();
+    requestAnimationFrame(loop);
+  })();
 
-  /* auto-advance: one card, then hold */
-  outer.addEventListener('mouseenter',()=>hovering=true);
-  outer.addEventListener('mouseleave',()=>hovering=false);
-  controls.addEventListener('mouseenter',()=>hovering=true);
-  controls.addEventListener('mouseleave',()=>hovering=false);
-  if(!reduce) setInterval(()=>{ if(!hovering&&!document.hidden) go(1); },HOLD);
+  /* arrows + keyboard */
+  document.getElementById('engPrev').addEventListener('click',()=>{ target=Math.round((target??rot)/A)*A+A; if(reduce){rot=target;target=null;} });
+  document.getElementById('engNext').addEventListener('click',()=>{ target=Math.round((target??rot)/A)*A-A; if(reduce){rot=target;target=null;} });
+  stage.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){e.preventDefault();document.getElementById('engNext').click();}
+    if(e.key==='ArrowLeft'){e.preventDefault();document.getElementById('engPrev').click();}
+    if(e.key==='Enter'&&e.target.classList.contains('is-front')) openModal(engProjects[frontIndex()]);
+  });
 
-  /* drag / swipe: follows the pointer, settles on the nearest card */
-  let startX=0, dx=0, down=false;
-  outer.addEventListener('pointerdown',e=>{
-    if(busy) return;
-    down=true; dragged=false; startX=e.clientX; dx=0;
+  /* pause while the pointer is over the ring */
+  stage.addEventListener('mouseenter',()=>hovering=true);
+  stage.addEventListener('pointermove',e=>{ if(e.pointerType==='mouse') hovering=true; });   /* also after a pop-up closes over it */
+  stage.addEventListener('mouseleave',()=>hovering=false);
+
+  /* only spin while the section is on screen */
+  new IntersectionObserver(es=>es.forEach(e=>inView=e.isIntersecting),{threshold:0.15}).observe(stage);
+
+  /* page scroll turns the ring (like the original gallery) */
+  let lastY=window.scrollY;
+  window.addEventListener('scroll',()=>{
+    const dy=window.scrollY-lastY; lastY=window.scrollY;
+    if(reduce||!inView||dragging) return;
+    target=null; rot-=dy*SCROLL_GAIN;
+  },{passive:true});
+
+  /* drag / swipe, then settle on the nearest card */
+  let startX=0, startRot=0;
+  stage.addEventListener('pointerdown',e=>{
+    if(e.button!==undefined&&e.button!==0) return;
+    dragging=true; dragged=false; startX=e.clientX; startRot=rot; target=null;
   });
   window.addEventListener('pointermove',e=>{
-    if(!down) return;
-    dx=e.clientX-startX;
-    if(Math.abs(dx)>6){ dragged=true; place(false,dx); }
+    if(!dragging) return;
+    const dx=e.clientX-startX;
+    if(Math.abs(dx)>6) dragged=true;
+    if(dragged) rot=startRot+dx*0.15;
   });
   window.addEventListener('pointerup',()=>{
-    if(!down) return;
-    down=false;
-    if(!dragged) return;
-    const moved=Math.round(-dx/step()) || (Math.abs(dx)>50 ? (dx<0?1:-1) : 0);
-    if(moved){ go(moved); } else { place(true); }
-    setTimeout(()=>dragged=false,0);
+    if(!dragging) return;
+    dragging=false;
+    if(dragged){ snap(); setTimeout(()=>dragged=false,0); }
   });
 
-  /* trackpad: one horizontal swipe gesture = one card */
-  let acc=0, locked=false, gestureEnd;
-  outer.addEventListener('wheel',e=>{
-    if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)) return;   // leave vertical page scrolling alone
-    e.preventDefault();
-    clearTimeout(gestureEnd);
-    gestureEnd=setTimeout(()=>{locked=false;acc=0;},250);  // gesture over once events stop
-    if(locked||busy) return;
-    acc+=e.deltaX;
-    if(Math.abs(acc)>40){ go(acc>0?1:-1); locked=true; acc=0; }
+  /* trackpad horizontal swipe */
+  let wheelEnd;
+  stage.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)) return;
+    e.preventDefault(); target=null; rot-=e.deltaX*0.15;
+    clearTimeout(wheelEnd); wheelEnd=setTimeout(snap,180);
   },{passive:false});
 
   let lastW=window.innerWidth;
-  window.addEventListener('resize',()=>{ if(window.innerWidth===lastW) return; lastW=window.innerWidth; if(busy) wrap(); place(false); });
-  place(false);
+  window.addEventListener('resize',()=>{ if(window.innerWidth!==lastW){ lastW=window.innerWidth; layout(); } });
+  layout(); render();
+})();
+
+/* ── ENGINEERING PROJECTS ON PHONES: card deck ──
+   Adapted from a card-deck carousel: throw the top card in any direction and it
+   tucks under the pile; buttons, arrow keys and autoplay do the same; "previous"
+   pulls the last card back on top. Tapping the top card opens its details. */
+(function(){
+  const root=document.getElementById('engDeck');
+  const deck=document.getElementById('engDeckCards');
+  if(!root||!deck) return;
+  const n=engProjects.length;
+  const SCATTER=6, AUTOPLAY=4200;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wrapI=(i)=>((i%n)+n)%n;
+  const tiltFor=(i)=>((((i+1)*2654435761)>>>0)/4294967296*2-1)*SCATTER;
+  const pad2=(v)=>v<10?'0'+v:String(v);
+  const isThrow=(dx,vx,w)=>Math.abs(dx)>w*0.28||(Math.abs(vx)>0.55&&Math.abs(dx)>24);
+  function pose(depth,i){
+    const d=Math.min(depth,3);
+    return {y:d?-d*16:0, scale:1-d*0.055, rot:(depth===0||reduce)?0:tiltFor(i), opacity:depth>3?0:1, shade:1-d*0.07};
+  }
+
+  const cards=engProjects.map((p,i)=>{
+    const el=document.createElement('div');
+    el.className='proj-card deck-card'+(p.img?' has-img':'');
+    el.innerHTML=`
+      ${p.img?`<div class="pc-imgwrap${p.imgFit==='contain'?' whole':''}"><img class="pc-img" src="${p.img}" alt="" loading="lazy" draggable="false"/></div>`:''}
+      <div class="pc-body">
+        <div class="pc-year">${p.year||''}</div>
+        <h3 class="pc-title">${L(p,'title')}</h3>
+        <div class="pc-co">${L(p,'company')}</div>
+        <p class="pc-desc">${L(p,'desc')}</p>
+        <span class="pc-more">${UI.readMore}</span>
+      </div>`;
+    deck.appendChild(el);
+    return el;
+  });
+
+  let top=0, over=null, busy=false, lastTouch=0;
+  const later=(fn,ms)=>setTimeout(fn,ms);
+
+  function render(){
+    cards.forEach((el,i)=>{
+      const depth=wrapI(i-top), p=pose(depth,i);
+      const o=over&&over.i===i?over:null;
+      el.style.transform=o?`translate(${o.x}px,${o.y}px) rotate(${o.r}deg)`:`translateY(${p.y}px) scale(${p.scale}) rotate(${p.rot.toFixed(2)}deg)`;
+      el.style.zIndex=o?n+1:n-depth;
+      el.style.opacity=o?1:p.opacity;
+      el.style.filter=(o||depth===0)?'none':`brightness(${p.shade})`;
+      el.dataset.top=depth===0?'1':'0';
+      el.dataset.mode=o?o.mode:'';
+      el.setAttribute('aria-hidden',depth===0?'false':'true');
+    });
+    document.getElementById('engDeckLive').textContent=`Project ${top+1} of ${n}: ${L(engProjects[top],'title')}`;
+  }
+
+  function throwTop(dirX,fromX=0,fromY=0,dirY=0){
+    const w=deck.offsetWidth||340;
+    if(busy||n<2) return;
+    busy=true;
+    const sx=dirX>=0?1:-1;
+    over={i:top,x:fromX+sx*w*1.25,y:fromY+dirY*0.4-40,r:sx*16,mode:'fly'}; render();
+    later(()=>{ over=null; top=wrapI(top+1); busy=false; render(); },reduce?200:430);
+  }
+  function pullBack(){
+    const w=deck.offsetWidth||340;
+    if(busy||n<2) return;
+    busy=true;
+    const i=wrapI(top-1);
+    over={i,x:-w*1.25,y:-40,r:-16,mode:'snap'}; render();
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      over={i,x:0,y:0,r:0,mode:'fly'}; render();
+      later(()=>{ over=null; top=i; busy=false; render(); },reduce?200:450);
+    }));
+  }
+
+  /* drag / throw the top card; a tap opens it */
+  let drag=null;
+  cards.forEach((el,i)=>{
+    el.addEventListener('pointerdown',e=>{
+      lastTouch=performance.now();
+      if(i!==top||busy||(e.pointerType==='mouse'&&e.button!==0)) return;
+      try{el.setPointerCapture(e.pointerId);}catch(err){}
+      drag={x:e.clientX,y:e.clientY,lx:e.clientX,lt:e.timeStamp,vx:0,moved:false};
+    });
+    el.addEventListener('pointermove',e=>{
+      if(!drag||i!==top) return;
+      const dt=Math.max(1,e.timeStamp-drag.lt);
+      drag.vx=0.8*((e.clientX-drag.lx)/dt)+0.2*drag.vx;
+      drag.lx=e.clientX; drag.lt=e.timeStamp;
+      const dx=e.clientX-drag.x, dy=e.clientY-drag.y;
+      if(Math.abs(dx)>6||Math.abs(dy)>6) drag.moved=true;
+      if(!drag.moved) return;
+      over={i,x:dx,y:dy,r:reduce?0:dx*0.05,mode:'drag'}; render();
+    });
+    const up=(e,cancelled)=>{
+      const d=drag; drag=null; lastTouch=performance.now();
+      if(!d||i!==top) return;
+      if(!d.moved){ over=null; render(); if(!cancelled) openModal(engProjects[i]); return; }
+      const dx=e.clientX-d.x, dy=e.clientY-d.y;
+      if(!cancelled&&isThrow(dx,d.vx,deck.offsetWidth||340)) throwTop(dx,dx,dy,dy);
+      else { over=null; render(); }
+    };
+    el.addEventListener('pointerup',e=>up(e,false));
+    el.addEventListener('pointercancel',e=>up(e,true));   /* the page took over to scroll */
+  });
+
+  document.getElementById('engDeckNext').addEventListener('click',()=>{lastTouch=performance.now();throwTop(1);});
+  document.getElementById('engDeckPrev').addEventListener('click',()=>{lastTouch=performance.now();pullBack();});
+  root.addEventListener('keydown',e=>{
+    lastTouch=performance.now();
+    if(e.key==='ArrowRight') throwTop(1);
+    else if(e.key==='ArrowLeft') pullBack();
+    else if(e.key==='Enter'&&e.target===root) openModal(engProjects[top]);
+    else return;
+    e.preventDefault();
+  });
+
+  /* autoplay only while the deck is on screen (it is hidden on desktop) and nobody is touching it */
+  let seen=false;
+  new IntersectionObserver(([e])=>{seen=e.isIntersecting;}).observe(root);
+  if(!reduce) setInterval(()=>{
+    if(!seen||document.hidden||drag||performance.now()-lastTouch<AUTOPLAY) return;
+    if(document.getElementById('modal').classList.contains('open')) return;
+    throwTop(1);
+  },AUTOPLAY);
+
+  render();
 })();
 
 /* ── OTHER PROJECTS MODAL ── */
@@ -1192,8 +1633,28 @@ function openOtherModal(){
   ordered.forEach((p,i)=>{
     const div=document.createElement('div');
     div.className='msc-snap-card'+(i>=TOP.length?' msc-extra':'');
-    div.innerHTML=`<h4>${L(p,'title')}</h4><p>${L(p,'desc')}</p><div class="snap-cta">${UI.readMore}</div>`;
-    div.addEventListener('click',()=>openModal(p));
+    const course=(L(p,'type')||'').split('·').slice(1).join('·').trim();
+    /* phones: the simple card. Website version: front = project name, back = quick overview */
+    div.innerHTML=`<h4>${L(p,'title')}</h4><p>${L(p,'desc')}</p><div class="snap-cta">${UI.readMore}</div>
+      <div class="flip-inner">
+        <div class="flip-face flip-front">${course?`<span class="flip-course">${course}</span>`:''}<span class="flip-title">${L(p,'title')}</span></div>
+        <div class="flip-face flip-back" aria-hidden="true"><p class="flip-desc">${L(p,'desc')}</p><span class="flip-more">${UI.readMore} &rarr;</span></div>
+      </div>`;
+    div.tabIndex=0;
+    div.setAttribute('role','button');
+    div.setAttribute('aria-label',L(p,'title')+'. '+L(p,'desc'));
+    div.addEventListener('click',()=>{
+      /* touch screens at website width: first tap flips to the overview, second tap opens */
+      const flipView=window.matchMedia('(min-width: 769px)').matches, canHover=window.matchMedia('(hover: hover)').matches;
+      if(flipView&&!canHover&&!div.classList.contains('flipped')){
+        stack.querySelectorAll('.msc-snap-card.flipped').forEach(c=>c.classList.remove('flipped'));
+        div.classList.add('flipped'); return;
+      }
+      openModal(p);
+    });
+    div.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal(p); } });
+    div.addEventListener('focus',()=>div.classList.add('flipped'));
+    div.addEventListener('blur',()=>div.classList.remove('flipped'));
     stack.appendChild(div);
   });
   const extra=ordered.length-TOP.length;
@@ -1244,7 +1705,13 @@ function closeModal(){
   document.getElementById('modalBg').classList.remove('open');
   document.body.style.overflow='';
 }
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape') return;
+  /* close the top-most pop-up first */
+  if(document.getElementById('modal').classList.contains('open')) closeModal();
+  else if(document.getElementById('bizPopup').classList.contains('open')) closeBizPopup();
+  else if(document.getElementById('bizOverlay').classList.contains('open')) closeBizPage();
+});
 
 /* ── BUSINESS PAGE ── */
 function openBizPage(){
@@ -1273,8 +1740,9 @@ function bizOverlayClickOutside(e){
   });
   document.addEventListener('mousemove',function(e){
     if(fakeCursor.style.display==='block'){
-      fakeCursor.style.left=e.clientX+'px';
-      fakeCursor.style.top=e.clientY+'px';
+      const z=pageZoom();
+      fakeCursor.style.left=e.clientX/z+'px';
+      fakeCursor.style.top=e.clientY/z+'px';
     }
   });
   icon4.addEventListener('click',function(){
@@ -1521,6 +1989,51 @@ function closeBizPopup(){
   },{passive:true});
 })();
 
+
+/* ── PHONE BOTTOM NAV ── */
+(function(){
+  const bar=document.getElementById('bottomNav');
+  const I={
+    home:'<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+    user:'<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    briefcase:'<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
+    wrench:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+    star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+    news:'<path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/>'
+  };
+  const items=[
+    {id:'home',icon:'home',en:'Home',fr:'Accueil'},
+    {id:'about',icon:'user',en:'About',fr:'À propos'},
+    {id:'snapshot',icon:'briefcase',en:'Background',fr:'Parcours'},
+    {id:'eng-projects',icon:'wrench',en:'Engineering',fr:'Ingénierie'},
+    {id:'skills',icon:'star',en:'Skills',fr:'Compétences'},
+    {id:'press',icon:'news',en:'Press',fr:'Presse'}
+  ];
+  const btns=items.map(it=>{
+    const label=it[LANG]||it.en;
+    const b=document.createElement('button');
+    b.type='button';b.className='bnav-btn';b.setAttribute('aria-label',label);
+    b.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true">${I[it.icon]}</svg><span class="bnav-label">${label}</span>`;
+    bar.appendChild(b);return b;
+  });
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let lock=0;
+  function setActive(i){btns.forEach((b,j)=>{b.classList.toggle('active',j===i);if(j===i)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});}
+  btns.forEach((b,i)=>b.addEventListener('click',()=>{
+    setActive(i); lock=Date.now()+900;
+    document.getElementById(items[i].id).scrollIntoView({behavior:reduce?'auto':'smooth'});
+  }));
+  /* highlight whichever section crosses the middle of the screen */
+  function sync(){
+    if(Date.now()<lock) return;
+    const mid=window.innerHeight/2; let cur=0;
+    items.forEach((it,i)=>{const r=document.getElementById(it.id).getBoundingClientRect();if(r.top<=mid)cur=i;});
+    setActive(cur);
+  }
+  let ticking=false;
+  window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(()=>{ticking=false;sync();});}},{passive:true});
+  setActive(0); setTimeout(sync,50);
+})();
 /* ── APPLY LANGUAGE TO STATIC TEXT ── */
 (function(){
   document.querySelectorAll('.lang-switch button').forEach(b=>{
