@@ -498,6 +498,15 @@ nav{gap:24px}
 /* phones: hide the business-page button */
 @media(max-width:768px){.business-btn-wrap{display:none}}
 </style>
+<style>
+/* phones: keep popups exactly screen-width, no sideways scrolling; close button inside the edge */
+@media(max-width:600px){
+  .modal,.biz-popup{overflow-x:hidden}
+  .modal-close{margin:10px 10px 0 0}
+  .modal-skills{flex-wrap:wrap}
+  .modal-img{max-width:100%}
+}
+</style>
 </head>
 <body>
 <div id="mc-cursor"></div>
