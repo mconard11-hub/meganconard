@@ -473,6 +473,27 @@ nav{gap:24px}
 .lang-switch button:hover{color:var(--navy)}
 @media(max-width:768px){.lang-switch{margin-left:auto;position:relative;z-index:501}}
 </style>
+<style>
+/* business button: default image sits in the layout (so it can't overlap text); hover image floats on top */
+.business-btn img.biz-btn-default{position:relative}
+.business-btn img.biz-btn-hover{position:absolute!important;top:0;left:0}
+/* phones / touch screens: only the main image, no swap */
+@media (hover:none){
+  .business-btn .biz-btn-hover{display:none}
+  .business-btn:hover .biz-btn-default,.business-btn.touched .biz-btn-default{opacity:1}
+  .business-btn:hover{transform:none}
+}
+</style>
+<style>
+/* phones: popups use the full screen width */
+@media(max-width:600px){
+  .biz-overlay{padding:0}
+  .biz-modal-inner,.biz-bg-img{max-width:100vw}
+  .biz-bg-img{width:100vw}
+  .biz-popup{width:100vw;max-width:100vw}
+  .modal{width:100vw;max-width:100vw}
+}
+</style>
 </head>
 <body>
 <div id="mc-cursor"></div>
@@ -1053,12 +1074,15 @@ const mscProjects=[
     track.style.transition=animate&&!reduce?EASE:'none';
     track.style.transform=`translateX(${-index*step()+offset}px)`;
   }
-  function go(d){
-    if(busy) return;
+  let safety;
+  function go(d,force){
+    if(busy&&!force) return;
+    if(busy){ wrap(); void track.offsetWidth; }
     busy=!reduce;
     index+=d;
     place(true);
-    if(reduce) wrap();
+    if(reduce){ wrap(); return; }
+    clearTimeout(safety); safety=setTimeout(()=>{ if(busy) wrap(); },900);
   }
   function wrap(){
     busy=false;
@@ -1067,8 +1091,8 @@ const mscProjects=[
   }
   track.addEventListener('transitionend',e=>{ if(e.target===track) wrap(); });
 
-  prev.addEventListener('click',()=>go(-1));
-  next.addEventListener('click',()=>go(1));
+  prev.addEventListener('click',()=>go(-1,true));
+  next.addEventListener('click',()=>go(1,true));
 
   /* auto-advance: one card, then hold */
   outer.addEventListener('mouseenter',()=>hovering=true);
@@ -1109,7 +1133,8 @@ const mscProjects=[
     if(Math.abs(acc)>40){ go(acc>0?1:-1); locked=true; acc=0; }
   },{passive:false});
 
-  window.addEventListener('resize',()=>place(false));
+  let lastW=window.innerWidth;
+  window.addEventListener('resize',()=>{ if(window.innerWidth===lastW) return; lastW=window.innerWidth; if(busy) wrap(); place(false); });
   place(false);
 })();
 
@@ -1475,16 +1500,12 @@ function closeBizPopup(){
   });
 
   /* ── MOBILE TOUCH: toggle hover image + confetti ── */
-  btn.addEventListener('touchstart', e=>{
-    e.preventDefault();
-    const isHovered = btn.classList.toggle('touched');
-    if(isHovered){
-      canvas.style.display='block';
-      particles=[];
-      spawn();
-      if(!active){active=true;loop();}
-    }
-  },{passive:false});
+  btn.addEventListener('touchstart', ()=>{
+    canvas.style.display='block';
+    particles=[];
+    spawn();
+    if(!active){active=true;loop();}
+  },{passive:true});
 })();
 
 /* ── APPLY LANGUAGE TO STATIC TEXT ── */
